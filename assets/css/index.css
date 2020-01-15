@@ -1,0 +1,21 @@
+
+.container-fluid > .row >  div {
+	height: 100px;
+	width: 200px;
+}
+
+table {
+	width: 95%;
+}
+
+td {
+	border: solid;
+}
+
+table tr:nth-child(odd) {
+	background-color: #fff;
+}
+
+table tr:nth-child(even) {
+	background-color: #eee;
+}
