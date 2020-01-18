@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>BootStrap Sample</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <!-- modal open button -->
+        <div class="text-center">
+          <button type="button" class="btn btn-primary" id="btn">Modal Open.</button>
+          <div id="msg"></div>
+        </div>
+
+        <!-- modal content -->
+        <div class="modal fade" id="modal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">メッセージ</h5>
+              </div>
+              <div class="modal-body">
+                <p>please entry message!</p>
+                <input type="text" class="form-control" id="input-1" placeholder="メッセージを入力する">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close(自動)</button>
+                <button type="button" class="btn btn-secondary" id="close">Close(手動)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script>
+    (function($){
+      const message = $('#msg');
+
+      $('#btn').on('click', function(){
+
+        const content = $('#modal');
+        content
+          // モーダル開始前の処理
+          .on('show.bs.modal', () => {
+            console.log('modal open start');
+          })
+          // モーダル開始後の処理
+          .on('shown.bs.modal', () => {
+            console.log('modal open complete');
+          })
+          // モーダル終了前の処理
+          .on('hide.bs.modal', () => {
+            console.log('modal hidden start');
+
+            // 入力されたメッセージを挿入する
+            const str = $('input', content).val();
+            if (str.length > 0) {
+              message.text(str);
+            }
+          })
+          // モーダル終了後の処理
+          .on('hidden.bs.modal', () => {
+            console.log('modal hidden complete');
+
+            // 後片付け
+            $('input', content).val('');
+          })
+          .modal({
+            backdrop: 'static',
+            keyboard: true
+          });
+
+        // Close(手動)ボタン
+        $('#close', content).on('click', () => {
+          content.modal('hide');
+        });
+      });
+    })(jQuery);
+  </script>
+</body>
+</html>

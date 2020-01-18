@@ -10,9 +10,14 @@ func main() {
 
 	router.LoadHTMLGlob("templates/*.html")
 
-	router.GET("/", func(ctx *gin.Context) {
-		ctx.HTML(200, "index.html", gin.H{})
-	})
+	router.GET("/", show("index"))
+	router.GET("/modal", show("modal"))
 
 	router.Run()
+}
+
+func show(htmlPath string) func(ctx *gin.Context) {
+	return func(ctx *gin.Context) {
+		ctx.HTML(200, htmlPath+".html", gin.H{})
+	}
 }

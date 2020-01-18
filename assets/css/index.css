@@ -1,21 +1,45 @@
-
-.container-fluid > .row >  div {
-	height: 100px;
-	width: 200px;
+body {
+	background-image: url(/test/assets/img/top.jpg);
+	background-size: cover;
 }
 
-table {
-	width: 95%;
-}
-
-td {
+.billding > div {
+	height: 100%;
 	border: solid;
 }
 
-table tr:nth-child(odd) {
+.floor {
+	height: 57px;
+}
+
+.floor:nth-child(odd){
 	background-color: #fff;
 }
 
-table tr:nth-child(even) {
+.floor:nth-child(even){
 	background-color: #eee;
+}
+
+#floor-map {
+	height: 500px;
+	width: 500px;
+
+	/* 後で消します */
+	background-color: cadetblue;
+}
+
+#floor-map .row1 {
+	height: 30%;
+}
+
+#floor-map .row1 > div:nth-child(1){
+	background-color: slategrey;
+}
+
+#floor-map .row1 > div:nth-child(2){
+	background-color: rgb(148, 95, 95);
+}
+
+#floor-map .row1 > div:nth-child(3){
+	background-color: rgb(61, 111, 161);
 }
