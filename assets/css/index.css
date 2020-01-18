@@ -28,6 +28,22 @@ body {
 	background-color: cadetblue;
 }
 
+.modal-body {
+	background-image: url(/assets/svg/west_1f.svg);
+	background-size: cover;
+	height: 500px;
+}
+
+svg {
+	width: 240px;
+	height: 256.6px;
+}
+
+svg image {
+	width: 240px;
+	height: 256.6px;
+}
+
 #floor-map .row1 {
 	height: 30%;
 }
