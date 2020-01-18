@@ -4,7 +4,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
   <style type="text/css" media="screen">
-    @import url("/assets/css/index.css");
+	@import url("/assets/css/index.css");
+	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css");
+	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css");
+
   </style>
 </head>
 
@@ -12,50 +15,64 @@
 
 	<div class="container-fluid mt-5">
 		<div class="row m-1">
-			<div class="east col-5">
-				<p>イースト</p>
-				<table>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-				</table>
+			<div class="billding col-5">
+				<div class="east row">
+					<div class="floor col-12">5F</div>
+					<div class="floor col-12">4F</div>
+					<div class="floor col-12">3F</div>
+					<div class="floor col-12">2F</div>
+					<div class="floor col-12">1F</div>
+				</div>
 			</div>
 			<div class="center col-2">
 
 			</div>
-			<div class="west  col-5">
-				<p>ウエスト</p>
-				<table>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-					<tr>
-						<td>ダイソー</td>
-					</tr>
-				</table>
+			<div class="billding west col-5">
+				<div class="west row">
+					<div class="floor col-12">5F</div>
+					<div class="floor col-12">4F</div>
+					<div class="floor col-12">3F</div>
+					<div class="floor col-12">2F</div>
+					<div class="floor col-12">1F</div>
+				</div>
 			</div>
 		</div>	
 	</div>
+	<div>
+        <!-- modal content -->
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="label1"></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					</div>
+					<div class="modal-body"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<!-- <button type="button" class="btn btn-primary">OK</button> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div>
+
+		<div id="floor-map">
+			<div class="row row1">
+				<div class="col-12"></div>
+				<div class="col-12"></div>
+				<div class="col-12"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/assets/jquery/jquery-3.4.1.min.js"></script>
+	<script src="/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+	<script src="/assets/js/index.js"></script>
+
 </body>
 </html>
