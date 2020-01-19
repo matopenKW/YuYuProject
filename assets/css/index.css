@@ -75,20 +75,24 @@ svg image {
 	background-color: rgb(61, 111, 161);
 }
 
-#status-bar {
-	height: 50px;
-}
-
-#tenant p {
+.a_team,
+.b_team
+{
 	color: #fff;
+    padding: 3px 10px;
+    border-radius: 17px;
 }
 
-#tenant .a_team {
+.a_team {
 	background-color: coral;
 }
 
-#tenant .b_team {
+.b_team {
 	background-color: lightskyblue;
+}
+
+#status-bar {
+	height: 50px;
 }
 
 #a_bar {
