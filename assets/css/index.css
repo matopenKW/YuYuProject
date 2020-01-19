@@ -1,14 +1,18 @@
+header {
+	background-color: #eee;
+	font-size: 3.5vh;
+	height: 4vh;
+}
+
 .container-fluid {
 	font-size: 3.5vh;
+	background-image: url(/assets/img/top_2.jpg);
+	background-size: cover;
+	height: 95vh;
 }
 
 #modal .modal-lg {
 	max-width: 800px;
-}
-
-body {
-	background-image: url(/assets/img/top.jpg);
-	background-size: cover;
 }
 
 .billding > div {
