@@ -45,6 +45,10 @@
 	height: 48vh;
 }
 
+#modal-body * {
+	font-size: 1.5vh;
+}
+
 svg {
 	width: 240px;
 	height: 256.6px;
@@ -69,4 +73,30 @@ svg image {
 
 #floor-map .row1 > div:nth-child(3){
 	background-color: rgb(61, 111, 161);
+}
+
+#status-bar {
+	height: 50px;
+}
+
+#tenant p {
+	color: #fff;
+}
+
+#tenant .a_team {
+	background-color: coral;
+}
+
+#tenant .b_team {
+	background-color: lightskyblue;
+}
+
+#a_bar {
+	width: 60%;
+	background-color: coral;
+}
+
+#b_bar {
+	width: 40%;
+	background-color: lightskyblue;
 }
