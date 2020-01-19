@@ -1,14 +1,9 @@
-header {
-	background-color: #eee;
-	font-size: 3.5vh;
-	height: 4vh;
-}
 
 .container-fluid {
 	font-size: 3.5vh;
 	background-image: url(/assets/img/top_2.jpg);
 	background-size: cover;
-	height: 95vh;
+	height: 100vh;
 }
 
 #modal .modal-lg {
