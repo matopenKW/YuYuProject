@@ -1,3 +1,11 @@
+* {
+	font-size: 3.5vh;
+}
+
+#modal .modal-lg {
+	max-width: 800px;
+}
+
 body {
 	background-image: url(/test/assets/img/top.jpg);
 	background-size: cover;
@@ -9,7 +17,7 @@ body {
 }
 
 .floor {
-	height: 57px;
+	height: 12vh;
 }
 
 .floor:nth-child(odd){
@@ -31,7 +39,7 @@ body {
 .modal-body {
 	background-image: url(/assets/svg/west_1f.svg);
 	background-size: cover;
-	height: 500px;
+	height: 48vh;
 }
 
 svg {
