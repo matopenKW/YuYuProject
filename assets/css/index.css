@@ -1,4 +1,4 @@
-* {
+.container-fluid {
 	font-size: 3.5vh;
 }
 
@@ -34,6 +34,10 @@ body {
 
 	/* 後で消します */
 	background-color: cadetblue;
+}
+
+#modal * {
+	font-size: 2.5vh;
 }
 
 .modal-body {
