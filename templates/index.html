@@ -36,8 +36,27 @@
 					<div class="floor col-12">1F</div>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
+	<div id="graph-area">
+		<h3>全体</h3>
+		<div class="row">
+			{{range .allList}}
+				<div class="{{.ClassName}} text-center" style="width: {{.Rate}}%;">{{.Name}} : {{.Rate}}%</div>
+			{{end}}
+		</div>
+		<h3>EAST</h3>
+		<div class="row">
+			{{range .eastList}}
+				<div class="{{.ClassName}} text-center" style="width: {{.Rate}}%;">{{.Name}} : {{.Rate}}%</div>
+			{{end}}
+		</div>
+		<h3>WEST</h3>
+		<div class="row">
+			{{range .westList}}
+				<div class="{{.ClassName}} text-center" style="width: {{.Rate}}%;">{{.Name}} : {{.Rate}}%</div>
+			{{end}}
+		</div>	
 	<!-- modal content -->
 	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
