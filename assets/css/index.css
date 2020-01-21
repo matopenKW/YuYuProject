@@ -1,9 +1,11 @@
+body * {
+	font-size: 3.5vh;
+}
 
 .container-fluid {
-	font-size: 3.5vh;
 	background-image: url(/assets/img/top_2.jpg);
 	background-size: cover;
-	height: 100vh;
+	height: 70vh;
 }
 
 #modal .modal-lg {
@@ -75,12 +77,17 @@ svg image {
 	background-color: rgb(61, 111, 161);
 }
 
-.a_team,
-.b_team
-{
+#graph-area * {
+	font-size: 2vh;
+}
+
+#graph-area {
+	background-color: #fff;
+	padding: 15px;
+}
+
+.a_team, .b_team, .c_team {
 	color: #fff;
-    padding: 3px 10px;
-    border-radius: 17px;
 }
 
 .a_team {
@@ -91,8 +98,19 @@ svg image {
 	background-color: lightskyblue;
 }
 
+.c_team {
+	background-color: rgb(31, 210, 61);
+}
+
 #status-bar {
 	height: 50px;
+}
+
+#modal .a_team,
+#modal .b_team
+{
+    padding: 3px 10px;
+    border-radius: 17px;
 }
 
 #a_bar {
