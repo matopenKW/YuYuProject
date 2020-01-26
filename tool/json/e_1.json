@@ -1,0 +1,82 @@
+[
+    {
+        "seq" : 1,
+        "Name" : "ニトリ",
+        "Acquisition" : "A"
+    },
+    {
+        "seq" : 2,
+        "Name" : "くくる",
+        "Acquisition" : "B"
+    },
+    {
+        "seq" : 3,
+        "Name" : "ニトリ3",
+        "Acquisition" : "A"
+    },
+    {
+        "seq" : 4,
+        "Name" : "ニトリ4",
+        "Acquisition" : "A"
+    },
+    {
+        "seq" : 5,
+        "Name" : "ニトリ5",
+        "Acquisition" : "A"
+    },
+    {
+        "seq" : 6,
+        "Name" : "ニトリ6",
+        "Acquisition" : "C"
+    },
+    {
+        "seq" : 7,
+        "Name" : "ニトリ7",
+        "Acquisition" : "C"
+    },
+    {
+        "seq" : 8,
+        "Name" : "ニトリ8",
+        "Acquisition" : ""
+    },
+    {
+        "seq" : 9,
+        "Name" : "ニトリ9",
+        "Acquisition" : ""
+    },
+    {
+        "seq" : 4,
+        "Name" : "ニトリ4",
+        "Acquisition" : "A"
+    },
+    {
+        "seq" : 5,
+        "Name" : "ニトリ5",
+        "Acquisition" : "A"
+    },
+    {
+        "seq" : 6,
+        "Name" : "ニトリ6",
+        "Acquisition" : "C"
+    },
+    {
+        "seq" : 7,
+        "Name" : "ニトリ7",
+        "Acquisition" : "C"
+    },
+    {
+        "seq" : 8,
+        "Name" : "ニトリ8",
+        "Acquisition" : ""
+    },
+    {
+        "seq" : 9,
+        "Name" : "ニトリ9",
+        "Acquisition" : ""
+    },
+    {
+        "seq" : 10,
+        "Name" : "ニトリ10",
+        "Acquisition" : ""
+    }
+]

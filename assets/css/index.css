@@ -106,8 +106,12 @@ svg image {
 	height: 50px;
 }
 
-#modal .a_team,
-#modal .b_team
+#modal #tenant {
+	overflow: scroll;
+    height: 100%;
+}
+
+#modal #tenant span
 {
     padding: 3px 10px;
     border-radius: 17px;
