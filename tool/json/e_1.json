@@ -2,81 +2,97 @@
     {
         "seq" : 1,
         "Name" : "ニトリ",
-        "Acquisition" : "A"
+        "Acquisition" : "A",
+        "ClassName" : "a_team"
     },
     {
         "seq" : 2,
         "Name" : "くくる",
-        "Acquisition" : "B"
+        "Acquisition" : "B",
+        "ClassName" : ""
     },
     {
         "seq" : 3,
         "Name" : "ニトリ3",
-        "Acquisition" : "A"
+        "Acquisition" : "A",
+        "ClassName" : ""
     },
     {
         "seq" : 4,
         "Name" : "ニトリ4",
-        "Acquisition" : "A"
+        "Acquisition" : "A",
+        "ClassName" : ""
     },
     {
         "seq" : 5,
         "Name" : "ニトリ5",
-        "Acquisition" : "A"
+        "Acquisition" : "A",
+        "ClassName" : ""
     },
     {
         "seq" : 6,
         "Name" : "ニトリ6",
-        "Acquisition" : "C"
+        "Acquisition" : "C",
+        "ClassName" : ""
     },
     {
         "seq" : 7,
         "Name" : "ニトリ7",
-        "Acquisition" : "C"
+        "Acquisition" : "C",
+        "ClassName" : ""
     },
     {
         "seq" : 8,
         "Name" : "ニトリ8",
-        "Acquisition" : ""
+        "Acquisition" : "",
+        "ClassName" : ""
     },
     {
         "seq" : 9,
         "Name" : "ニトリ9",
-        "Acquisition" : ""
+        "Acquisition" : "",
+        "ClassName" : ""
     },
     {
         "seq" : 4,
         "Name" : "ニトリ4",
-        "Acquisition" : "A"
+        "Acquisition" : "A",
+        "ClassName" : ""
     },
     {
         "seq" : 5,
         "Name" : "ニトリ5",
-        "Acquisition" : "A"
+        "Acquisition" : "A",
+        "ClassName" : ""
     },
     {
         "seq" : 6,
         "Name" : "ニトリ6",
-        "Acquisition" : "C"
+        "Acquisition" : "C",
+        "ClassName" : ""
     },
     {
         "seq" : 7,
         "Name" : "ニトリ7",
-        "Acquisition" : "C"
+        "Acquisition" : "C",
+        "ClassName" : ""
     },
     {
         "seq" : 8,
         "Name" : "ニトリ8",
-        "Acquisition" : ""
+        "Acquisition" : "",
+        "ClassName" : ""
     },
     {
         "seq" : 9,
         "Name" : "ニトリ9",
-        "Acquisition" : ""
+        "Acquisition" : "",
+        "ClassName" : ""
     },
     {
         "seq" : 10,
         "Name" : "ニトリ10",
-        "Acquisition" : ""
+        "Acquisition" : "",
+        "ClassName" : ""
     }
 ]
