@@ -1,6 +1,8 @@
 package dto
 
 type Team struct {
-	Id  string `json:",omitempty"`
-	Uid string `json:",omitempty"`
+	Name      string `json:",omitempty"`
+	ClassName string `json:",omitempty"`
+	Rate      int    `json:",omitempty"`
+	Uid       string `json:",omitempty"`
 }

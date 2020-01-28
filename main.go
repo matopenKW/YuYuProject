@@ -9,12 +9,6 @@ import (
 	"log"
 )
 
-type Team struct {
-	Name      string
-	ClassName string
-	Rate      int
-}
-
 func main() {
 	router := gin.Default()
 	router.Static("/assets", "./assets")
@@ -85,9 +79,12 @@ func getList() []*dto.Tenanto {
 }
 
 func getListJson(tenanto string) ([]*dto.Tenanto, error) {
-	bytes := useIoutilReadFile(tenanto)
+	bytes, err := useIoutilReadFile(tenanto)
+	if err != nil {
+		return nil, err
+	}
 	var tenantoList []*dto.Tenanto
-	err := json.Unmarshal(bytes, &tenantoList)
+	err = json.Unmarshal(bytes, &tenantoList)
 	if err != nil {
 		return nil, err
 	}
@@ -100,37 +97,77 @@ func getData() (map[string]interface{}, error) {
 		return nil, err
 	}
 
+	var aCnt, bCnt, cCnt int
 	for _, v := range list {
 
 		switch v.Acquisition {
 		case "A":
 			v.ClassName = "a_team"
+			aCnt++
 		case "B":
 			v.ClassName = "b_team"
+			bCnt++
 		case "C":
 			v.ClassName = "c_team"
+			cCnt++
 		default:
-			v.ClassName = "none-team"
+			v.ClassName = "none_team"
+			v.Acquisition = "N"
 		}
 		log.Println(&v)
 	}
 
+	total := len(list)
+
+	barA := &dto.Team{
+		Name:      "A",
+		ClassName: "a_team",
+		Rate:      (aCnt * 100) / total,
+		Uid:       "",
+	}
+
+	barB := &dto.Team{
+		Name:      "B",
+		ClassName: "b_team",
+		Rate:      (bCnt * 100) / total,
+		Uid:       "",
+	}
+
+	barC := &dto.Team{
+		Name:      "C",
+		ClassName: "c_team",
+		Rate:      (cCnt * 100) / total,
+		Uid:       "",
+	}
+
+	barNone := &dto.Team{
+		Name:      "None",
+		ClassName: "none_team",
+		Rate:      ((total - aCnt - bCnt - cCnt) * 100) / total,
+		Uid:       "",
+	}
+
+	barList := []*dto.Team{barA, barB, barC, barNone}
+
+	log.Println(barA, barB, barC)
+
 	return map[string]interface{}{
 		"JSON":        "Data",
+		"barList":     barList,
 		"tenantoList": list,
 	}, nil
 }
 
-func useIoutilReadFile(tenanto string) []byte {
+func useIoutilReadFile(tenanto string) ([]byte, error) {
 	bytes, err := ioutil.ReadFile("tool/json/" + tenanto + ".json")
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
-	return bytes
+	return bytes, nil
 }
 
-func getTeamList() (allList, eastList, westList []*Team) {
+func getTeamList() (allList, eastList, westList []*dto.Team) {
 
 	ALL := 30
 	WEST := 15
@@ -145,48 +182,48 @@ func getTeamList() (allList, eastList, westList []*Team) {
 	C_WEST := 9
 	C_EAST := 5
 
-	A := &Team{
-		"A", "a_team", (A_WEST + A_EAST) * 100 / ALL,
+	A := &dto.Team{
+		"A", "a_team", (A_WEST + A_EAST) * 100 / ALL, "",
 	}
 
-	B := &Team{
-		"B", "b_team", (B_WEST + B_EAST) * 100 / ALL,
+	B := &dto.Team{
+		"B", "b_team", (B_WEST + B_EAST) * 100 / ALL, "",
 	}
 
-	C := &Team{
-		"C", "c_team", (C_WEST + C_EAST) * 100 / ALL,
+	C := &dto.Team{
+		"C", "c_team", (C_WEST + C_EAST) * 100 / ALL, "",
 	}
-	allList = []*Team{A, B, C}
+	allList = []*dto.Team{A, B, C}
 
 	for _, v := range allList {
 		log.Println(v)
 	}
 
-	A = &Team{
-		"A", "a_team", A_WEST * 100 / WEST,
+	A = &dto.Team{
+		"A", "a_team", A_WEST * 100 / WEST, "",
 	}
 
-	B = &Team{
-		"B", "b_team", B_WEST * 100 / WEST,
+	B = &dto.Team{
+		"B", "b_team", B_WEST * 100 / WEST, "",
 	}
 
-	C = &Team{
-		"C", "c_team", C_WEST * 100 / WEST,
+	C = &dto.Team{
+		"C", "c_team", C_WEST * 100 / WEST, "",
 	}
-	eastList = []*Team{A, B, C}
+	eastList = []*dto.Team{A, B, C}
 
-	A = &Team{
-		"A", "a_team", A_EAST * 100 / EAST,
-	}
-
-	B = &Team{
-		"B", "b_team", B_EAST * 100 / EAST,
+	A = &dto.Team{
+		"A", "a_team", A_EAST * 100 / EAST, "",
 	}
 
-	C = &Team{
-		"C", "c_team", C_EAST * 100 / EAST,
+	B = &dto.Team{
+		"B", "b_team", B_EAST * 100 / EAST, "",
 	}
-	westList = []*Team{A, B, C}
+
+	C = &dto.Team{
+		"C", "c_team", C_EAST * 100 / EAST, "",
+	}
+	westList = []*dto.Team{A, B, C}
 
 	return
 }

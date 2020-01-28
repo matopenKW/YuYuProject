@@ -86,7 +86,7 @@ svg image {
 	padding: 15px;
 }
 
-.a_team, .b_team, .c_team {
+.a_team, .b_team, .c_team, .none_team {
 	color: #fff;
 }
 
@@ -102,6 +102,10 @@ svg image {
 	background-color: rgb(31, 210, 61);
 }
 
+.none_team {
+	background-color: rgba(82, 78, 78, 0.568)
+}
+
 #status-bar {
 	height: 50px;
 }
@@ -115,14 +119,4 @@ svg image {
 {
     padding: 3px 10px;
     border-radius: 17px;
-}
-
-#a_bar {
-	width: 60%;
-	background-color: coral;
-}
-
-#b_bar {
-	width: 40%;
-	background-color: lightskyblue;
 }
