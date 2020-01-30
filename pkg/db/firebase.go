@@ -10,7 +10,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-const keyjson = "../pkg/conf/key.json"
+const keyjson = "pkg/conf/key.json"
 
 func OpenAuth() (*auth.Client, error) {
 	ctx := context.Background()
