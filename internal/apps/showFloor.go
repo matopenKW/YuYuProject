@@ -2,6 +2,7 @@ package apps
 
 import (
 	"YuYuProject/internal/dto"
+	"YuYuProject/pkg/util"
 	"encoding/json"
 	"github.com/JustinTulloss/firebase"
 	"io/ioutil"
@@ -88,7 +89,7 @@ func getData(floorId string) (map[string]interface{}, error) {
 }
 
 func getListJson(tenanto string) ([]*dto.TenantoView, error) {
-	bytes, err := useIoutilReadFile(tenanto)
+	bytes, err := util.ReadFile("tool/json/" + tenanto + ".json")
 	if err != nil {
 		return nil, err
 	}
