@@ -1,8 +1,14 @@
 package dto
 
 type Team struct {
-	Name      string `json:",omitempty"`
+	Id        string `json:",omitempty"`
 	ClassName string `json:",omitempty"`
-	Rate      int    `json:",omitempty"`
 	Uid       string `json:",omitempty"`
+}
+
+type TeamRate struct {
+	Team
+	All  int `json:",omitempty"`
+	West int `json:",omitempty"`
+	East int `json:",omitempty"`
 }
