@@ -1,10 +1,17 @@
 [
     {
-        "Name" : "ニトリ",
-        "Acquisition" : "A"
+        "Id" : "A",
+        "West" : 30,
+        "East" : 40
     },
     {
-        "Name" : "ニトリ",
-        "Acquisition" : "A"
-    }
+        "Id" : "B",
+        "West" : 30,
+        "East" : 20
+    },
+    {
+        "Id" : "C",
+        "West" : 30,
+        "East" : 10
+    }    
 ]
