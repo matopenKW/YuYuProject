@@ -23,6 +23,7 @@ func main() {
 func index(ctx *gin.Context) {
 
 	form, err := apps.ShowMainPage()
+
 	if err != nil {
 		ctx.HTML(http.StatusInternalServerError, "505.html", gin.H{})
 	} else {
