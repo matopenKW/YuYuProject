@@ -1,0 +1,22 @@
+[
+    {
+        "Id" : "A",
+        "ClassName" : "a_team",
+        "Uid" : ""
+    },
+    {
+        "Id" : "B",
+        "ClassName" : "b_team",
+        "Uid" : ""
+    },
+    {
+        "Id" : "C",
+        "ClassName" : "c_team",
+        "Uid" : ""
+    },
+    {
+        "Id" : "",
+        "ClassName" : "none_team",
+        "Uid" : ""
+    }
+]
