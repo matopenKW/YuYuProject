@@ -46,13 +46,13 @@ function showModal(floor, obj){
         bar += '" class="';
         bar += this.ClassName;
         bar += ' team-bar text-center">';
-        bar += this.Name;
+        bar += this.Id;
         bar += '</div>';
     });
     var $bar = $('#status-bar');
     $bar.html(bar);
     $.each(obj.barList, function(){
-        $bar.children('.' + this.ClassName).css('width', this.Rate + '%');
+        $bar.children('.' + this.ClassName).css('width', this.All + '%');
     });
 
     var tenanto = '';

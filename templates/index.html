@@ -41,20 +41,20 @@
 	<div id="graph-area">
 		<h3>全体</h3>
 		<div class="row">
-			{{range .allList}}
-				<div class="{{.ClassName}} text-center" style="width: {{.Rate}}%;">{{.Name}} : {{.Rate}}%</div>
+			{{range .list}}
+				<div class="{{.ClassName}} text-center" style="width: {{.All}}%;">{{.Id}} : {{.All}}%</div>
 			{{end}}
 		</div>
 		<h3>EAST</h3>
 		<div class="row">
-			{{range .eastList}}
-				<div class="{{.ClassName}} text-center" style="width: {{.Rate}}%;">{{.Name}} : {{.Rate}}%</div>
+			{{range .list}}
+				<div class="{{.ClassName}} text-center" style="width: {{.West}}%;">{{.Id}} : {{.West}}%</div>
 			{{end}}
 		</div>
 		<h3>WEST</h3>
 		<div class="row">
-			{{range .westList}}
-				<div class="{{.ClassName}} text-center" style="width: {{.Rate}}%;">{{.Name}} : {{.Rate}}%</div>
+			{{range .list}}
+				<div class="{{.ClassName}} text-center" style="width: {{.East}}%;">{{.Id}} : {{.East}}%</div>
 			{{end}}
 		</div>	
 	<!-- modal content -->

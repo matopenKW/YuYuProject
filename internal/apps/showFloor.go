@@ -1,11 +1,8 @@
 package apps
 
 import (
+	"YuYuProject/internal/dao"
 	"YuYuProject/internal/dto"
-	"YuYuProject/pkg/util"
-	"encoding/json"
-	"github.com/JustinTulloss/firebase"
-	"io/ioutil"
 	"log"
 )
 
@@ -14,7 +11,6 @@ func GetFloorData() (map[string]interface{}, error) {
 	res, err := getData("e_1")
 	if err != nil {
 		log.Println(err.Error())
-
 		return nil, err
 	}
 
@@ -22,111 +18,47 @@ func GetFloorData() (map[string]interface{}, error) {
 }
 
 func getData(floorId string) (map[string]interface{}, error) {
-	list, err := getListJson(floorId)
+
+	teamDao := dao.GetTeamDao()
+	temaList, err := teamDao()
 	if err != nil {
 		return nil, err
 	}
 
-	var aCnt, bCnt, cCnt int
-	for _, v := range list {
-
-		switch v.Acquisition {
-		case "A":
-			v.ClassName = "a_team"
-			aCnt++
-		case "B":
-			v.ClassName = "b_team"
-			bCnt++
-		case "C":
-			v.ClassName = "c_team"
-			cCnt++
-		default:
-			v.ClassName = "none_team"
-			v.Acquisition = "N"
+	teamMap := make(map[string]*dto.Team)
+	cntMap := make(map[string]int)
+	for _, v := range temaList {
+		if v.Id == "" {
+			v.Id = "N"
 		}
-		log.Println(&v)
+		teamMap[v.Id] = v
+		cntMap[v.Id] = 0
 	}
 
-	total := len(list)
-
-	barA := &dto.Team{
-		Name:      "A",
-		ClassName: "a_team",
-		Rate:      (aCnt * 100) / total,
-		Uid:       "",
+	tenantoDao := dao.GetTenatoDao()
+	floorList, err := tenantoDao(floorId)
+	if err != nil {
+		return nil, err
 	}
 
-	barB := &dto.Team{
-		Name:      "B",
-		ClassName: "b_team",
-		Rate:      (bCnt * 100) / total,
-		Uid:       "",
+	for _, floor := range floorList {
+		if floor.Acquisition == "" {
+			floor.Acquisition = "N"
+		}
+		floor.ClassName = teamMap[floor.Acquisition].ClassName
+		cntMap[floor.Acquisition] = cntMap[floor.Acquisition] + 1
 	}
 
-	barC := &dto.Team{
-		Name:      "C",
-		ClassName: "c_team",
-		Rate:      (cCnt * 100) / total,
-		Uid:       "",
+	barList := make([]*dto.TeamRate, 0, 0)
+	for _, team := range temaList {
+		var bar = &dto.TeamRate{}
+		bar.Team = *team
+		bar.All = (cntMap[team.Id] * 100) / len(floorList)
+		barList = append(barList, bar)
 	}
-
-	barNone := &dto.Team{
-		Name:      "None",
-		ClassName: "none_team",
-		Rate:      ((total - aCnt - bCnt - cCnt) * 100) / total,
-		Uid:       "",
-	}
-
-	barList := []*dto.Team{barA, barB, barC, barNone}
-
-	log.Println(barA, barB, barC)
 
 	return map[string]interface{}{
-		"JSON":        "Data",
 		"barList":     barList,
-		"tenantoList": list,
+		"tenantoList": floorList,
 	}, nil
-}
-
-func getListJson(tenanto string) ([]*dto.TenantoView, error) {
-	bytes, err := util.ReadFile("tool/json/" + tenanto + ".json")
-	if err != nil {
-		return nil, err
-	}
-	var tenantoList []*dto.TenantoView
-	err = json.Unmarshal(bytes, &tenantoList)
-	if err != nil {
-		return nil, err
-	}
-	return tenantoList, nil
-}
-
-func getList() []*dto.Tenanto {
-
-	auth := "1zBUevXg2gtvtgCaqw3n591l0PR949ZzgwXabjKm"
-	endpoint := "https://mac-001-1e4f9.firebaseio.com/"
-
-	c := firebase.NewClient(endpoint+"/billdiing/e_1", auth, nil)
-
-	retTenanto := func() interface{} {
-		return &dto.Tenanto{}
-	}
-
-	var list []*dto.Tenanto
-	for n := range c.Iterator(retTenanto) {
-		dto := n.Value.(*dto.Tenanto)
-		log.Println(dto)
-		list = append(list, dto)
-	}
-
-	return list
-}
-
-func useIoutilReadFile(tenanto string) ([]byte, error) {
-	bytes, err := ioutil.ReadFile("tool/json/" + tenanto + ".json")
-	if err != nil {
-		return nil, err
-	}
-
-	return bytes, nil
 }

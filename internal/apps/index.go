@@ -1,84 +1,63 @@
 package apps
 
 import (
+	"YuYuProject/internal/dao"
 	"YuYuProject/internal/dto"
 	"log"
 )
 
 func ShowMainPage() (map[string]interface{}, error) {
-	list, eastList, westList := getTeamList()
-	log.Print(list)
+	list, err := getBarList()
+	if err != nil {
+		return nil, err
+	}
 
+	log.Println(list)
 	return map[string]interface{}{
-		"allList":  list,
-		"eastList": eastList,
-		"westList": westList,
+		"list": list,
 	}, nil
-
 }
 
-func getTeamList() (allList, eastList, westList []*dto.Team) {
+func getBarList() ([]*dto.TeamRate, error) {
 
-	ALL := 30
-	WEST := 15
-	EAST := 15
-
-	A_WEST := 3
-	A_EAST := 4
-
-	B_WEST := 3
-	B_EAST := 6
-
-	C_WEST := 9
-	C_EAST := 5
-
-	A := &dto.Team{
-		"A", "a_team", (A_WEST + A_EAST) * 100 / ALL, "",
+	teamDao := dao.GetTeamDao()
+	teamList, err := teamDao()
+	if err != nil {
+		return nil, err
 	}
 
-	B := &dto.Team{
-		"B", "b_team", (B_WEST + B_EAST) * 100 / ALL, "",
+	teamRateDao := dao.GetTeamRateDao()
+	teamRateList, err := teamRateDao()
+	if err != nil {
+		return nil, err
 	}
 
-	C := &dto.Team{
-		"C", "c_team", (C_WEST + C_EAST) * 100 / ALL, "",
-	}
-	allList = []*dto.Team{A, B, C}
+	var westCnt, eastCnt int
+	var barList []*dto.TeamRate
+	for _, team := range teamList {
+		for _, teamRate := range teamRateList {
+			if team.Id == teamRate.Id {
+				bar := teamRate
+				bar.ClassName = team.ClassName
+				bar.All = (teamRate.West + teamRate.East) / 2
+				barList = append(barList, bar)
 
-	for _, v := range allList {
+				westCnt += teamRate.West
+				eastCnt += teamRate.East
+			}
+		}
+	}
+
+	bar := &dto.TeamRate{}
+	bar.ClassName = "none_team"
+	bar.West = 100 - westCnt
+	bar.East = 100 - eastCnt
+	bar.All = (bar.West + bar.East) / 2
+	barList = append(barList, bar)
+
+	for _, v := range barList {
 		log.Println(v)
 	}
 
-	A = &dto.Team{
-		"A", "a_team", A_WEST * 100 / WEST, "",
-	}
-
-	B = &dto.Team{
-		"B", "b_team", B_WEST * 100 / WEST, "",
-	}
-
-	C = &dto.Team{
-		"C", "c_team", C_WEST * 100 / WEST, "",
-	}
-	eastList = []*dto.Team{A, B, C}
-
-	A = &dto.Team{
-		"A", "a_team", A_EAST * 100 / EAST, "",
-	}
-
-	B = &dto.Team{
-		"B", "b_team", B_EAST * 100 / EAST, "",
-	}
-
-	C = &dto.Team{
-		"C", "c_team", C_EAST * 100 / EAST, "",
-	}
-	westList = []*dto.Team{A, B, C}
-
-	return
-}
-
-func getRate(all int, num ...int) int {
-
-	return 0
+	return barList, nil
 }
