@@ -9,6 +9,14 @@ $(function(){
         $('#tenant p').hide();
         $('#tenant').find('.' + teamId).parent('p').show();
     });
+
+    $(document).on('click','#btnRagistSerial', function(){
+        showRegistSerialModal();
+    });
+
+    $(document).on('click', '#modalBtnRagist', function(){
+        ragistSerial();
+    });
 });
 
 function clickFloor(obj) {
@@ -33,8 +41,6 @@ function clickTeamBar(){
 }
 
 function showModal(floor, obj){
-
-
 
     $('#modal .modal-title').html(floor);
 
@@ -68,8 +74,40 @@ function showModal(floor, obj){
         tenanto += '</p>';
     });
     $('#tenant').html(tenanto);
-
-    // $('#modal .modal-body').html('12234');
-
     $('#modal').modal('show');
+}
+
+function showRegistSerialModal(){
+
+    $('#modal .modal-title').html('シリアルコードを登録');
+
+    var html = '';
+    html += '<p>シリアルコード</p>'
+    html += '<input type="text" id="modalSerialCode">';
+    html += '<button type="button" id="modalBtnRagist" class="btn btn-primary">登録</button>';
+
+    $('#modal-body').html(html);
+    $('#modal').modal('show');
+}
+
+function ragistSerial(){
+
+    var serialCode = $('#modalSerialCode').val();
+
+    var data = {
+        serialCode : serialCode
+    }
+    var done = function(data){
+        var obj = JSON.parse(data);
+        alert(obj.message);
+    }
+    var fail = function(data){
+        var obj = JSON.parse(data);
+        var msg = "エラーが発生しました。/n";
+        msg += "tetetet";
+        alert(msg);
+    }
+
+    ajaxExecute("/registSerial", 'POST', data, done, fail);
+
 }

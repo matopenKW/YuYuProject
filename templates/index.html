@@ -56,7 +56,14 @@
 			{{range .list}}
 				<div class="{{.ClassName}} text-center" style="width: {{.East}}%;">{{.Id}} : {{.East}}%</div>
 			{{end}}
-		</div>	
+		</div>
+	</div>
+	<div>
+		<div class="row text-center">
+			<button type="button" id="btnRagistSerial" class="btn btn-primary">Primary</button>
+		</div>
+	</div>
+
 	<!-- modal content -->
 	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
@@ -68,10 +75,7 @@
 				</button>
 				</div>
 				<div class="modal-body" id="modal-body">
-					<div id="status-bar" class="row">
-						<!-- <div id="a_bar" team-id="a_team" class="a_team team-bar text-center">A</div>
-						<div id="b_bar" team-id="b_team" class="b_team team-bar text-center">B</div> -->
-					</div>
+					<div id="status-bar" class="row"></div>
 					<div id="tenant"></div>
 				</div>
 				<div class="modal-footer">
