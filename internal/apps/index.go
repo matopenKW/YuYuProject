@@ -18,7 +18,7 @@ func ShowMainPage() (map[string]interface{}, error) {
 	}, nil
 }
 
-func getBarList() ([]*dto.TeamRate, error) {
+func getBarList() ([]*dto.Team, error) {
 
 	teamDao := dao.GetTeamDao()
 	teamList, err := teamDao()
@@ -26,29 +26,19 @@ func getBarList() ([]*dto.TeamRate, error) {
 		return nil, err
 	}
 
-	teamRateDao := dao.GetTeamRateDao()
-	teamRateList, err := teamRateDao()
-	if err != nil {
-		return nil, err
-	}
-
 	var westCnt, eastCnt int
-	var barList []*dto.TeamRate
+	var barList []*dto.Team
 	for _, team := range teamList {
-		for _, teamRate := range teamRateList {
-			if team.Id == teamRate.Id {
-				bar := teamRate
-				bar.ClassName = team.ClassName
-				bar.All = (teamRate.West + teamRate.East) / 2
-				barList = append(barList, bar)
+		bar := team
+		bar.ClassName = team.ClassName
+		bar.All = (team.West + team.East) / 2
+		barList = append(barList, bar)
 
-				westCnt += teamRate.West
-				eastCnt += teamRate.East
-			}
-		}
+		westCnt += team.West
+		eastCnt += team.East
 	}
 
-	bar := &dto.TeamRate{}
+	bar := &dto.Team{}
 	bar.ClassName = "none_team"
 	bar.West = 100 - westCnt
 	bar.East = 100 - eastCnt
