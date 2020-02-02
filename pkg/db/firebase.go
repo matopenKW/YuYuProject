@@ -61,17 +61,22 @@ func UpdateUserInfo(client *auth.Client, uid string, userToUodate *auth.UserToUp
 	return user, nil
 }
 
-func SelectDocuments(client *firestore.Client, userID string, orderBy func() (string, firestore.Direction)) ([]map[string]interface{}, error) {
+func SelectDocuments(client *firestore.Client, collection func(client *firestore.Client) *firestore.CollectionRef, orderBy func() (string, firestore.Direction)) ([]map[string]interface{}, error) {
 	ctx := context.Background()
 
 	list := make([]map[string]interface{}, 0, 10)
 
-	colle := client.Collection(userID)
+	colle := collection(client)
 	if colle == nil {
 		return nil, errors.New("failed to connect")
 	}
 
-	iter := colle.OrderBy(orderBy()).Documents(ctx)
+	var iter *firestore.DocumentIterator
+	if orderBy != nil {
+		iter = colle.OrderBy(orderBy()).Documents(ctx)
+	} else {
+		iter = colle.Documents(ctx)
+	}
 
 	for {
 		doc, err := iter.Next()
