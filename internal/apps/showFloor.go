@@ -49,10 +49,9 @@ func getData(floorId string) (map[string]interface{}, error) {
 		cntMap[floor.Acquisition] = cntMap[floor.Acquisition] + 1
 	}
 
-	barList := make([]*dto.TeamRate, 0, 0)
+	barList := make([]*dto.Team, 0, 0)
 	for _, team := range temaList {
-		var bar = &dto.TeamRate{}
-		bar.Team = *team
+		var bar = &dto.Team{}
 		bar.All = (cntMap[team.Id] * 100) / len(floorList)
 		barList = append(barList, bar)
 	}

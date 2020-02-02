@@ -2,17 +2,23 @@
     {
         "Id" : "A",
         "ClassName" : "a_team",
-        "Uid" : ""
+        "Uid" : "",
+        "West" : 30,
+        "East" : 40
     },
     {
         "Id" : "B",
         "ClassName" : "b_team",
-        "Uid" : ""
+        "Uid" : "",
+        "West" : 30,
+        "East" : 20
     },
     {
         "Id" : "C",
         "ClassName" : "c_team",
-        "Uid" : ""
+        "Uid" : "",
+        "West" : 30,
+        "East" : 10
     },
     {
         "Id" : "",
