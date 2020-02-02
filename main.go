@@ -59,7 +59,7 @@ func registSerial(ctx *gin.Context) {
 
 	if err != nil {
 		satus = http.StatusInternalServerError
-		msg = "成功しました。"
+		msg = err.Error()
 	} else {
 		satus = http.StatusOK
 		msg = "成功しました。"
