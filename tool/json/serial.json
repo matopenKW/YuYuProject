@@ -1,0 +1,38 @@
+[
+    {
+        "FloorId" : "e_1",
+        "Seq" : 1,
+        "Acquired" : true,
+        "Acquisition" : "A"
+    },
+    {
+        "FloorId" : "e_1",
+        "Seq" : 2,
+        "Acquired" : false,
+        "Acquisition" : ""
+    },
+    {
+        "FloorId" : "e_1",
+        "Seq" : 3,
+        "Acquired" : true,
+        "Acquisition" : "B"
+    },
+    {
+        "FloorId" : "e_2",
+        "Seq" : 1,
+        "Acquired" : false,
+        "Acquisition" : ""
+    },
+    {
+        "FloorId" : "e_2",
+        "Seq" : 2,
+        "Acquired" : true,
+        "Acquisition" : "B"
+    },
+    {
+        "FloorId" : "e_2",
+        "Seq" : 3,
+        "Acquired" : false,
+        "Acquisition" : ""
+    }
+]
