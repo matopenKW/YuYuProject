@@ -44,10 +44,13 @@ func getTeamJson() ([]*dto.Team, error) {
 
 func getTeamFireBase() ([]*dto.Team, error) {
 	client, err := db.OpenFirestore()
+	collection := func (client *firestore.Client)(*firestore.CollectionRef){
+		return client.Collection("team")
+	}
 	orderBy := func ()(string, firestore.Direction){
 		return "Id", firestore.Asc
 	}
-	teamMaps, err := db.SelectDocuments(client, "team", orderBy)
+	teamMaps, err := db.SelectDocuments(client, collection, orderBy)
 	if err != nil {
 		return nil, err
 	}
