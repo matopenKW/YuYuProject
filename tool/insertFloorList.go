@@ -1,4 +1,4 @@
-package main
+package tool
 
 import (
 	"YuYuProject/internal/dao"
@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func main() {
+func insertFloorList() {
 
 	log.Println("start")
 
