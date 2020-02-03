@@ -6,6 +6,38 @@
 	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css");
 	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css");
   </style>
+  <style>
+	h1 {
+      margin: 10px 0;
+      font-size: 40px;
+    }
+
+    #loadingMessage {
+      text-align: center;
+      padding: 40px;
+      background-color: #eee;
+    }
+
+    #canvas {
+      width: 100%;
+    }
+
+    #output {
+      margin-top: 20px;
+      background: #eee;
+      padding: 10px;
+      padding-bottom: 0;
+    }
+
+    #output div {
+      padding-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    #noQRFound {
+      text-align: center;
+    }
+	  </style>
 </head>
 
 <body>
@@ -78,19 +110,14 @@
 			</div>
 		</div>
 	</div>
-	<div id="dummy" style="display:none">
-		<div id="modal-ragist-serial">
-			<div class="row"><p>シリアルコード</p></div>
-			<div class="row"><button type="button" id="modalBtnRagist" class="btn btn-primary">登録</button></div>
-		</div>
-	</div>
 		
 	<script src="/assets/jquery/jquery-3.4.1.min.js"></script>
 	<script src="/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 	<script src="/assets/js/ajax.js"></script>
+	<script src="/assets/jsQR/jsQR.min.js"></script>
 
 	<script src="/assets/js/index.js"></script>
-	<script src="/assets/jsQR/jsQR.min.js"></script>
+
 
 </body>
 </html>
