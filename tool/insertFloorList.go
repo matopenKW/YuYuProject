@@ -1,4 +1,4 @@
-package main
+package tool
 
 import (
 	"YuYuProject/internal/dao"
