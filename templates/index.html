@@ -5,10 +5,7 @@
 	@import url("/assets/css/index.css");
 	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css");
 	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css");
-
   </style>
-
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 </head>
 
 <body>
@@ -56,7 +53,13 @@
 			{{range .list}}
 				<div class="{{.ClassName}} text-center" style="width: {{.East}}%;">{{.Id}} : {{.East}}%</div>
 			{{end}}
-		</div>	
+		</div>
+	</div>
+	<div id="ragist-serial">
+		<div class="row text-center">
+			<button type="button" id="btnRagistSerial" class="btn btn-primary">シリアルコードを入力</button>
+		</div>
+	</div>
 	<!-- modal content -->
 	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
@@ -67,18 +70,18 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				</div>
-				<div class="modal-body" id="modal-body">
-					<div id="status-bar" class="row">
-						<!-- <div id="a_bar" team-id="a_team" class="a_team team-bar text-center">A</div>
-						<div id="b_bar" team-id="b_team" class="b_team team-bar text-center">B</div> -->
-					</div>
-					<div id="tenant"></div>
-				</div>
+				<div class="modal-body" id="modal-body"></div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<!-- <button type="button" class="btn btn-primary">OK</button> -->
 				</div>
 			</div>
+		</div>
+	</div>
+	<div id="dummy" style="display:none">
+		<div id="modal-ragist-serial">
+			<div class="row"><p>シリアルコード</p></div>
+			<div class="row"><button type="button" id="modalBtnRagist" class="btn btn-primary">登録</button></div>
 		</div>
 	</div>
 		
@@ -87,6 +90,7 @@
 	<script src="/assets/js/ajax.js"></script>
 
 	<script src="/assets/js/index.js"></script>
+	<script src="/assets/jsQR/jsQR.min.js"></script>
 
 </body>
 </html>
