@@ -17,6 +17,10 @@ func main() {
 	router.GET("/", index)
 	router.POST("/floor", showFloor)
 
+	router.GET("/jsQR", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "jsQR.html", gin.H{})
+	})
+
 	router.Run()
 }
 
