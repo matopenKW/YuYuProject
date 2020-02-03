@@ -1,4 +1,4 @@
-package main
+package tool
 
 import (
 	"YuYuProject/internal/dto"
@@ -9,7 +9,7 @@ import (
 	"log"
 )
 
-func main() {
+func inserSerial() {
 
 	log.Println("start")
 

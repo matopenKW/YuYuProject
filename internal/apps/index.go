@@ -39,6 +39,7 @@ func getBarList() ([]*dto.Team, error) {
 	}
 
 	bar := &dto.Team{}
+	bar.Id = "N"
 	bar.ClassName = "none_team"
 	bar.West = 100 - westCnt
 	bar.East = 100 - eastCnt
