@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func main() {
+func insertFloorList() {
 
 	log.Println("start")
 
