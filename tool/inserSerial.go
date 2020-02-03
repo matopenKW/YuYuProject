@@ -9,7 +9,7 @@ import (
 	"log"
 )
 
-func main() {
+func inserSerial() {
 
 	log.Println("start")
 
