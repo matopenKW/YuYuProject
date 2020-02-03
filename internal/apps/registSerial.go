@@ -1,6 +1,7 @@
 package apps
 
 import (
+	"YuYuProject/internal/dao"
 	"errors"
 	"log"
 )
@@ -20,23 +21,24 @@ func RegistSerial() error {
 }
 
 func regist(teamId, serialCode string) error {
-	// whiteswanに作ってもらうところ
+	singleSerialDao := dao.GetSingleSerialDao()
+	serial, err := singleSerialDao(serialCode)
+	if err != nil {
+		return err
+	}
 
-	// 画面で入力したシリアルコード = DocumentIdです。
+	if serial.Acquired {
+		return errors.New("すでに登録済みのシリアルコードです。")
+	}
 
-	// 1. シリアルコレクションから対象のDocumentを取得する
+	serial.Acquired = true
+	serial.Acquisition = teamId
 
-	// 2. Doumentが取得できない場合は以下のエラーをreturn する
-	// errors.New("存在しないシリアルコードです。")
-
-	// 3. 取得したDocumentのAcquiredがtrueだった場合は以下のエラーをreturnする
-	// errors.New("すでに登録済みのシリアルコードです。")
-
-	// 4. Douemntが存在した場合は対象のDocumentを以下の様に更新
-	// Acquired = true
-	// Acquisition = teamId
-
-	// 5. その他、エラーが起きた場合はエラーを　returnすること
+	updateSerialDao := dao.UpdateSerialDao()
+	err = updateSerialDao(serialCode, serial)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
