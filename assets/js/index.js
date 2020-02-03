@@ -44,9 +44,12 @@ function showModal(floor, obj){
 
     $('#modal .modal-title').html(floor);
 
+    var temp = '<div id="status-bar" class="row"></div>';
+    temp += '<div id="tenant"></div>';
+    $('#modal-body').html(temp);
+
     var bar = '';
     $.each(obj.barList, function(){
-        console.log(this);
         bar += '<div team-id="';
         bar += this.ClassName;
         bar += '" class="';
@@ -78,14 +81,8 @@ function showModal(floor, obj){
 }
 
 function showRegistSerialModal(){
-
     $('#modal .modal-title').html('シリアルコードを登録');
-
-    var html = '';
-    html += '<p>シリアルコード</p>'
-    html += '<input type="text" id="modalSerialCode">';
-    html += '<button type="button" id="modalBtnRagist" class="btn btn-primary">登録</button>';
-
+    var html = $('#dummy > div').clone()
     $('#modal-body').html(html);
     $('#modal').modal('show');
 }
