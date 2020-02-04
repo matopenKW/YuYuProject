@@ -92,7 +92,7 @@ function showModal(floor, obj){
 function showRegistSerialModal(){
     $('#modal .modal-title').html('シリアルコードを登録');
     var html = '';
-    html += '<div id="modal-ragist-serial">';
+    html += '<div id="modal-ragist-serial class="text-center"">';
     html += '<div class="row"><p>シリアルコード</p></div>';
     html += '<div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>';
     html += '<canvas id="canvas" hidden></canvas>';
