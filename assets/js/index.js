@@ -86,9 +86,8 @@ function showModal(floor, obj){
 }
 
 function showRegistSerialModal(){
-    $('#serial-modal-body .modal-title').html('シリアルコードを登録');
-    $('#serial-modal').modal('show');
 
+    $('#serial-modal').modal('show');
     standby();
     cameraStart(); 
 }
