@@ -8,7 +8,7 @@ body * {
 	height: 70vh;
 }
 
-#modal .modal-lg {
+.modal .modal-lg {
 	max-width: 800px;
 }
 
@@ -37,14 +37,14 @@ body * {
 	background-color: cadetblue;
 }
 
-#modal * {
+.modal * {
 	font-size: 2.5vh;
 }
 
 .modal-body {
 	background-image: url(/assets/svg/west_1f.svg);
 	background-size: cover;
-	height: 48vh;
+	height: 50vh;
 }
 
 #modal-body * {
@@ -116,18 +116,29 @@ svg image {
 	height: 50px;
 }
 
-#modal #tenant {
+.modal #tenant {
 	overflow: scroll;
     height: 100%;
 }
 
-#modal #tenant span
+.modal #tenant span
 {
     padding: 3px 10px;
     border-radius: 17px;
 }
 
-#modal-ragist-serial * {
+#serial-modal * {
 	font-size: 3vh;
+}
 
+#serial-code-area {
+	margin: 2vh;
+}
+
+#serial-code-text {
+	width: 100%;
+}
+
+#modal-btn-ragist-area {
+	place-self: center;
 }
