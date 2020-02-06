@@ -1,11 +1,3 @@
-var video;
-var canvasElement;
-var canvas;
-var loadingMessage;
-var outputContainer;
-var outputMessage;
-var outputData;
-
 $(function(){
     $(document).on('click', '.floor', function(){
         clickFloor(this);
@@ -20,6 +12,10 @@ $(function(){
 
     $(document).on('click','#btnRagistSerial', function(){
         showRegistSerialModal();
+    });
+
+    $(document).on('click', '#btnCopy', function(){
+        clipboardCopy();
     });
 
     $(document).on('click', '#modalBtnRagist', function(){
@@ -90,29 +86,13 @@ function showModal(floor, obj){
 }
 
 function showRegistSerialModal(){
-    $('#modal .modal-title').html('シリアルコードを登録');
-    var html = '';
-    html += '<div id="modal-ragist-serial">';
-    html += '<div class="row"><p>シリアルコード</p></div>';
-    html += '<div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>';
-    html += '<canvas id="canvas" hidden></canvas>';
-    html += '<div id="output" hidden>';
-    html += '<div id="outputMessage">No QR code detected.</div>';
-    html += '<div hidden><b>Data:</b> <span id="outputData"></span></div>';
-    html += '</div>';
-	html += '<div class="row"><button type="button" id="modalBtnRagist" class="btn btn-primary">登録</button></div>';
-	html += '</div>';
-    $('#modal-body').html(html);
-    $('#modal').modal('show');
 
-    video = document.createElement("video");
-    canvasElement = document.getElementById("canvas");
-    canvas = canvasElement.getContext("2d");
-    loadingMessage = document.getElementById("loadingMessage");
-    outputContainer = document.getElementById("output");
-    outputMessage = document.getElementById("outputMessage");
-    outputData = document.getElementById("outputData");
+    $('#serial-modal').modal('show');
+    standby();
+    cameraStart(); 
+}
 
+function cameraStart(){
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
         video.srcObject = stream;
         video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
@@ -121,9 +101,15 @@ function showRegistSerialModal(){
     });
 }
 
+function clipboardCopy() {
+    var copyTarget = $("#outputData")[0];
+    document.getSelection().selectAllChildren(copyTarget);
+    document.execCommand("copy");
+}
+
 function ragistSerial(){
 
-    var serialCode = $('#modalSerialCode').val();
+    var serialCode = $('#serial-code-text').val();
 
     var data = {
         serialCode : serialCode
@@ -135,49 +121,9 @@ function ragistSerial(){
     var fail = function(data){
         var obj = JSON.parse(data);
         var msg = "エラーが発生しました。/n";
-        msg += "tetetet";
         alert(msg);
     }
 
     ajaxExecute("/registSerial", 'POST', data, done, fail);
 
 }
-
-function drawLine(begin, end, color) {
-    canvas.beginPath();
-    canvas.moveTo(begin.x, begin.y);
-    canvas.lineTo(end.x, end.y);
-    canvas.lineWidth = 4;
-    canvas.strokeStyle = color;
-    canvas.stroke();
-  }
-
-  function tick() {
-    loadingMessage.innerText = "⌛ Loading video..."
-    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-      loadingMessage.hidden = true;
-      canvasElement.hidden = false;
-      outputContainer.hidden = false;
-
-      canvasElement.height = video.videoHeight;
-      canvasElement.width = video.videoWidth;
-      canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-      var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
-      var code = jsQR(imageData.data, imageData.width, imageData.height, {
-        inversionAttempts: "dontInvert",
-      });
-      if (code) {
-        drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
-        drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
-        drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
-        drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
-        outputMessage.hidden = true;
-        outputData.parentElement.hidden = false;
-        outputData.innerText = code.data;
-      } else {
-        outputMessage.hidden = false;
-        outputData.parentElement.hidden = true;
-      }
-    }
-    requestAnimationFrame(tick);
-  }
