@@ -19,7 +19,7 @@
     }
 
     #canvas {
-      width: 100%;
+	  height: 30vh;
     }
 
     #output {
@@ -37,6 +37,7 @@
     #noQRFound {
       text-align: center;
     }
+	
 	  </style>
 </head>
 
@@ -110,6 +111,38 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="serial-modal" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title" id="label2">シリアルコードを登録</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+				<div class="modal-body" id="serial-modal-body">
+					<div id="modal-ragist-serial" class="text-center">
+						<div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
+						<canvas id="canvas" hidden></canvas>
+						<div id="output" hidden>
+							<div id="outputMessage">No QR code detected.</div>
+							<div hidden>
+								<button type="button" id="btnCopy" class="btn btn-primary">コピー</button>
+								<span id="outputData"></span>
+							</div>
+						</div>
+						<div id="serial-code-area" class="row text-center">
+							<input id="serial-code-text" type="text" placeholder="コードを入力or貼り付け">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer text-center" id="modal-btn-ragistArea">
+					<button type="button" id="modalBtnRagist" class="btn btn-primary">シリアルコードを登録</button>
+				</div>
+			</div>
+		</div>
+	</div>
 		
 	<script src="/assets/jquery/jquery-3.4.1.min.js"></script>
 	<script src="/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
@@ -117,6 +150,7 @@
 	<script src="/assets/jsQR/jsQR.min.js"></script>
 
 	<script src="/assets/js/index.js"></script>
+	<script src="/assets/js/jsQRReader.js"></script>
 
 
 </body>
