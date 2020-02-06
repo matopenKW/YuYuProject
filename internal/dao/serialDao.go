@@ -117,7 +117,11 @@ func updateSerialFireBase(serialCode string, serial *dto.Serial)(error){
 	if err != nil {
 		return err
 	}
-	err = db.UpdateDocument(client, "serial", serialCode, serial)
+	document := func(client *firestore.Client) *firestore.DocumentRef{
+		return client.Collection("serial").Doc(serialCode)
+	}
+	err = db.UpdateDocument(client, document, serial)
+	
 	if err != nil {
 		return err
 	}

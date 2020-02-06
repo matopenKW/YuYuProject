@@ -159,10 +159,10 @@ func DeleteDocument(client *firestore.Client, userId string, documentId string) 
 	return nil
 }
 
-func UpdateDocument(client *firestore.Client, userId string, documentId string, data interface{}) error {
+func UpdateDocument(client *firestore.Client, document func(client *firestore.Client) *firestore.DocumentRef, data interface{}) error {
 	ctx := context.Background()
 
-	_, err := client.Collection(userId).Doc(documentId).Set(ctx, data)
+	_, err := document(client).Set(ctx, data)
 	if err != nil {
 		return err
 	}
