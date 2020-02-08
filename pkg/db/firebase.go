@@ -61,6 +61,24 @@ func UpdateUserInfo(client *auth.Client, uid string, userToUodate *auth.UserToUp
 	return user, nil
 }
 
+func SelectDocument(client *firestore.Client, id string, collection func(client *firestore.Client) *firestore.CollectionRef) (map[string]interface{}, error) {
+	ctx := context.Background()
+
+	colle := collection(client)
+	if colle == nil {
+		return nil, errors.New("failed to connect")
+	}
+	
+	doc, err := colle.Doc(id).Get(ctx)
+	if err != nil {
+		return nil, errors.New("存在しないシリアルコードです。")
+	}
+	data := doc.Data()
+	data["DocumentId"] = doc.Ref.ID
+
+	return data, nil
+}
+
 func SelectDocuments(client *firestore.Client, collection func(client *firestore.Client) *firestore.CollectionRef, orderBy func() (string, firestore.Direction)) ([]map[string]interface{}, error) {
 	ctx := context.Background()
 
@@ -141,10 +159,10 @@ func DeleteDocument(client *firestore.Client, userId string, documentId string) 
 	return nil
 }
 
-func UpdateDocument(client *firestore.Client, userId string, documentId string, data map[string]interface{}) error {
+func UpdateDocument(client *firestore.Client, document func(client *firestore.Client) *firestore.DocumentRef, data interface{}) error {
 	ctx := context.Background()
 
-	_, err := client.Collection(userId).Doc(documentId).Set(ctx, data)
+	_, err := document(client).Set(ctx, data)
 	if err != nil {
 		return err
 	}

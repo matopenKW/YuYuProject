@@ -27,7 +27,7 @@ func inserSerial() {
 		log.Println(v)
 
 		ctx := context.Background()
-		ref := firestore.Collection("test_serial")
+		ref := firestore.Collection("serial")
 		doc := ref.NewDoc()
 
 		_, err := doc.Set(ctx, v)

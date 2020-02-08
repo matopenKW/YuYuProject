@@ -16,6 +16,7 @@ func main() {
 
 	router.GET("/", index)
 	router.POST("/floor", showFloor)
+	router.GET("/registSerial", registSerial)
 
 	router.GET("/jsQR", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "jsQR.html", gin.H{})
@@ -51,5 +52,29 @@ func showFloor(ctx *gin.Context) {
 	} else {
 		ctx.JSON(200, string(bytes))
 	}
+}
 
+func registSerial(ctx *gin.Context) {
+
+	err := apps.RegistSerial()
+
+	var satus int
+	var msg string
+
+	if err != nil {
+		satus = http.StatusInternalServerError
+		msg = err.Error()
+	} else {
+		satus = http.StatusOK
+		msg = "成功しました。"
+	}
+
+	bytes, err := json.Marshal(map[string]interface{}{
+		"message": msg,
+	})
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, "{message: 'json marshal fail'}")
+	} else {
+		ctx.JSON(satus, string(bytes))
+	}
 }
