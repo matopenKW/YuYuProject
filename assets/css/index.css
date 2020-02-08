@@ -41,7 +41,7 @@ body * {
 	font-size: 2.5vh;
 }
 
-.modal-body {
+#modal .modal-body {
 	background-image: url(/assets/svg/west_1f.svg);
 	background-size: cover;
 	height: 50vh;
@@ -127,6 +127,16 @@ svg image {
     border-radius: 17px;
 }
 
+#modal-ragist-serial {
+	margin-bottom: 3vh;
+}
+
+#modal-regist-product .tenant{
+	width: 3vh;
+    height: 3vh;
+    vertical-align: middle;
+}
+
 #serial-modal * {
 	font-size: 3vh;
 }
@@ -141,4 +151,9 @@ svg image {
 
 #modal-btn-ragist-area {
 	place-self: center;
+}
+
+#modal-regist-product {
+	margin: 1vw;
+	margin-top: 10px;
 }

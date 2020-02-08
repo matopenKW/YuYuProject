@@ -14,12 +14,12 @@ $(function(){
         showRegistSerialModal();
     });
 
-    $(document).on('click', '#btnCopy', function(){
-        clipboardCopy();
-    });
-
     $(document).on('click', '#modalBtnRagist', function(){
         ragistSerial();
+    });
+
+    $(document).on('click', '#modalBtnProductRagist', function(){
+        ragistProduct();
     });
 
 });
@@ -86,31 +86,11 @@ function showModal(floor, obj){
 }
 
 function showRegistSerialModal(){
-
     $('#serial-modal').modal('show');
-    standby();
-    cameraStart(); 
-}
-
-function cameraStart(){
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-        video.srcObject = stream;
-        video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-        video.play();
-        requestAnimationFrame(tick);
-    });
-}
-
-function clipboardCopy() {
-    var copyTarget = $("#outputData")[0];
-    document.getSelection().selectAllChildren(copyTarget);
-    document.execCommand("copy");
 }
 
 function ragistSerial(){
-
     var serialCode = $('#serial-code-text').val();
-
     var data = {
         serialCode : serialCode
     }
@@ -119,11 +99,29 @@ function ragistSerial(){
         alert(obj.message);
     }
     var fail = function(data){
-        var obj = JSON.parse(data);
-        var msg = "エラーが発生しました。/n";
-        alert(msg);
+        var obj = JSON.parse(data.responseJSON);
+        alert(obj.message);
     }
 
-    ajaxExecute("/registSerial", 'POST', data, done, fail);
+    ajaxExecute("/registSerial", 'GET', data, done, fail);
+}
 
+function ragistProduct(){
+    var $tenant = $('.tenant:checked')
+
+    var data = {
+        tenantId: $tenant.val(),
+        productName: $('#productName').val(),
+        productNo: $('#productNo').val()
+    }
+    var done = function(data){
+        var obj = JSON.parse(data);
+        alert(obj.message);
+    }
+    var fail = function(data){
+        var obj = JSON.parse(data.responseJSON);
+        alert(obj.message);
+    }
+
+    ajaxExecute("/ragistProduct", 'GET', data, done, fail);
 }
