@@ -9,6 +9,7 @@ import (
 	"errors"
 	"gopkg.in/ini.v1"
 	"github.com/mitchellh/mapstructure"
+	"strconv"
 )
 
 func GetTenatoDao() func(floorId string) ([]*dto.Tenanto, error) {
@@ -63,4 +64,34 @@ func getTenatoFireBase(floorId string) ([]*dto.Tenanto, error) {
 		tenantoList = append(tenantoList, tenanto)
 	}
 	return tenantoList, nil
+}
+
+func UpdateTenantoDao() func(string, *dto.Tenanto) ( error) {
+
+	c, _ := ini.Load(CONFIG_PATH)
+	environment := c.Section("db").Key("environment").MustInt()
+	switch environment {
+	case 2:
+		return updateTenantoFireBase
+	default:
+		return func(string, *dto.Tenanto) (error) {
+			return errors.New("daoのセットに失敗しました environment:" + string(environment))
+		}
+	}
+}
+
+func updateTenantoFireBase(floorId string, tenanto *dto.Tenanto)(error){
+	client, err := db.OpenFirestore()
+	if err != nil {
+		return err
+	}
+	document := func(client *firestore.Client) *firestore.DocumentRef{
+		return client.Collection("building").Doc("twins").Collection(floorId).Doc(strconv.Itoa(tenanto.Seq))
+	}
+	err = db.UpdateDocument(client, document, tenanto)
+	
+	if err != nil {
+		return err
+	}
+	return nil
 }
