@@ -18,10 +18,6 @@ func main() {
 	router.POST("/floor", showFloor)
 	router.GET("/registSerial", registSerial)
 
-	router.GET("/jsQR", func(ctx *gin.Context) {
-		ctx.HTML(http.StatusOK, "jsQR.html", gin.H{})
-	})
-
 	router.Run()
 }
 
@@ -56,7 +52,7 @@ func showFloor(ctx *gin.Context) {
 
 func registSerial(ctx *gin.Context) {
 
-	err := apps.RegistSerial()
+	err := apps.RegistSerial(ctx.Request)
 
 	var satus int
 	var msg string
