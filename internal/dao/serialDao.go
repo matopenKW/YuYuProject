@@ -1,12 +1,14 @@
 package dao
 
 import (
-	"cloud.google.com/go/firestore"
 	"YuYuProject/internal/dto"
 	"YuYuProject/pkg/db"
+	"YuYuProject/pkg/util"
+	"cloud.google.com/go/firestore"
+	"encoding/json"
 	"errors"
-	"gopkg.in/ini.v1"
 	"github.com/mitchellh/mapstructure"
+	"gopkg.in/ini.v1"
 )
 
 func GetSerialDao() func() ([]*dto.Serial, error) {
@@ -25,20 +27,20 @@ func GetSerialDao() func() ([]*dto.Serial, error) {
 	}
 }
 
-func getSerialJson() ([]*dto.Serial, error){
+func getSerialJson() ([]*dto.Serial, error) {
 
 	return nil, nil
 }
 
-func getSerialFireBase() ([]*dto.Serial, error){
+func getSerialFireBase() ([]*dto.Serial, error) {
 	client, err := db.OpenFirestore()
 	if err != nil {
 		return nil, err
 	}
-	collection := func (client *firestore.Client)(*firestore.CollectionRef){
+	collection := func(client *firestore.Client) *firestore.CollectionRef {
 		return client.Collection("serial")
 	}
-	orderBy := func ()(string, firestore.Direction){
+	orderBy := func() (string, firestore.Direction) {
 		return "Seq", firestore.Asc
 	}
 	serialMaps, err := db.SelectDocuments(client, collection, orderBy)
@@ -73,16 +75,31 @@ func GetSingleSerialDao() func(string) (*dto.Serial, error) {
 	}
 }
 
-func getSingleSerialJson(serial string)(*dto.Serial, error){
-	return nil, nil
+func getSingleSerialJson(serialCode string) (*dto.Serial, error) {
+	bytes, err := util.ReadFile("tool/json/serial.json")
+	if err != nil {
+		return nil, err
+	}
+
+	var serialList []*dto.Serial
+	err = json.Unmarshal(bytes, &serialList)
+	if err != nil {
+		return nil, err
+	}
+
+	var serial *dto.Serial
+	for _, v := range serialList {
+		serial = v
+	}
+	return serial, nil
 }
 
-func getSingleSerialFireBase(serialCode string) (*dto.Serial, error){
+func getSingleSerialFireBase(serialCode string) (*dto.Serial, error) {
 	client, err := db.OpenFirestore()
 	if err != nil {
 		return nil, err
 	}
-	collection := func (client *firestore.Client)(*firestore.CollectionRef){
+	collection := func(client *firestore.Client) *firestore.CollectionRef {
 		return client.Collection("serial")
 	}
 
@@ -98,30 +115,33 @@ func getSingleSerialFireBase(serialCode string) (*dto.Serial, error){
 	return serial, nil
 }
 
-func UpdateSerialDao() func(string, *dto.Serial) ( error) {
+func UpdateSerialDao() func(string, *dto.Serial) error {
 
 	c, _ := ini.Load(CONFIG_PATH)
 	environment := c.Section("db").Key("environment").MustInt()
 	switch environment {
+	//	case 1:
+	// return func(string, *dto.Serial) error {
+	// 	return nil
+	// }
 	case 2:
 		return updateSerialFireBase
 	default:
-		return func(string, *dto.Serial) (error) {
+		return func(string, *dto.Serial) error {
 			return errors.New("daoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }
 
-func updateSerialFireBase(serialCode string, serial *dto.Serial)(error){
+func updateSerialFireBase(serialCode string, serial *dto.Serial) error {
 	client, err := db.OpenFirestore()
 	if err != nil {
 		return err
 	}
-	document := func(client *firestore.Client) *firestore.DocumentRef{
+	document := func(client *firestore.Client) *firestore.DocumentRef {
 		return client.Collection("serial").Doc(serialCode)
 	}
 	err = db.UpdateDocument(client, document, serial)
-	
 	if err != nil {
 		return err
 	}
