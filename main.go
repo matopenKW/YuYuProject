@@ -19,6 +19,8 @@ func main() {
 	router.GET("/registSerial", registSerial)
 	router.GET("/ragistProduct", ragistProduct)
 
+  router.GET("/updateTenantoTeam", updateTenantoTeam)
+
 	router.Run()
 }
 
@@ -77,8 +79,31 @@ func registSerial(ctx *gin.Context) {
 }
 
 func ragistProduct(ctx *gin.Context) {
-
 	err := apps.RegistProduct(ctx.Request)
+  
+	var satus int
+	var msg string
+
+	if err != nil {
+		satus = http.StatusInternalServerError
+		msg = err.Error()
+	} else {
+		satus = http.StatusOK
+		msg = "成功しました。"
+	}
+
+	bytes, err := json.Marshal(map[string]interface{}{
+		"message": msg,
+	})
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, "{message: 'json marshal fail'}")
+	} else {
+		ctx.JSON(satus, string(bytes))
+	}
+}
+
+func updateTenantoTeam(ctx *gin.Context){
+	err := apps.UpdateTenantoTeam()
 
 	var satus int
 	var msg string

@@ -8,6 +8,7 @@ import (
 	"firebase.google.com/go/auth"
 	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
+	"log"
 )
 
 const keyjson = "pkg/conf/key.json"
@@ -26,6 +27,7 @@ func OpenAuth() (*auth.Client, error) {
 		return nil, err
 	}
 
+	log.Println("Firestore Auth Succeeded!")
 	return client, nil
 }
 
@@ -71,11 +73,13 @@ func SelectDocument(client *firestore.Client, id string, collection func(client 
 
 	doc, err := colle.Doc(id).Get(ctx)
 	if err != nil {
-		return nil, errors.New("存在しないシリアルコードです。")
+		return nil, errors.New("存在しないシリアルコードです。 ID:" + string(id))
 	}
 	data := doc.Data()
 	data["DocumentId"] = doc.Ref.ID
 
+	log.Println("Select Document:")
+	log.Println(data)
 	return data, nil
 }
 
@@ -110,6 +114,8 @@ func SelectDocuments(client *firestore.Client, collection func(client *firestore
 		list = append(list, data)
 	}
 
+	log.Println("Select Documents:")
+	log.Println(list)
 	return list, nil
 }
 
@@ -162,6 +168,8 @@ func DeleteDocument(client *firestore.Client, userId string, documentId string) 
 func UpdateDocument(client *firestore.Client, document func(client *firestore.Client) *firestore.DocumentRef, data interface{}) error {
 	ctx := context.Background()
 
+	log.Println("Update Document:")
+	log.Println(data)
 	_, err := document(client).Set(ctx, data)
 	if err != nil {
 		return err
@@ -173,12 +181,16 @@ func UpdateDocument(client *firestore.Client, document func(client *firestore.Cl
 func InsertDocument(client *firestore.Client, collection func(client *firestore.Client) *firestore.CollectionRef, data interface{}) (string, error) {
 	ctx := context.Background()
 
-	collec := collection(client)
+	log.Println("Insert Document:")
+	log.Println(data)
+  
+  collec := collection(client)
 	if collec == nil {
 		return "", errors.New("failed to connect")
 	}
-
+  
 	doc, _, err := collec.Add(ctx, data)
+
 	if err != nil {
 		return "", err
 	}
