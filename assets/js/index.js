@@ -25,14 +25,14 @@ $(function(){
 });
 
 function clickFloor(obj) {
-    var floor = $(obj).html();
+    var $floor = $(obj);
 
     var data = {
-        floorId : $(obj).attr("floor-id")
+        floorId : $floor.attr("floor-id")
     }
     var done = function(data){
         var obj = JSON.parse(data);
-        showModal(floor, obj);
+        showModal($floor, obj);
     }
     var fail = function(data){
         alert("失敗");
@@ -45,13 +45,15 @@ function clickTeamBar(){
 
 }
 
-function showModal(floor, obj){
-
-    $('#modal .modal-title').html(floor);
+function showModal($floor, obj){
+    $('#modal .modal-title').html($floor.html());
 
     var temp = '<div id="status-bar" class="row"></div>';
     temp += '<div id="tenant"></div>';
     $('#modal-body').html(temp);
+    $('#modal-body').css({
+        backgroundImage: 'url("/assets/img/'+ $floor.attr("floor-id") +'.png")'
+    });
 
     var bar = '';
     $.each(obj.barList, function(){
