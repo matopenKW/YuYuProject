@@ -68,7 +68,7 @@ func SelectDocument(client *firestore.Client, id string, collection func(client 
 	if colle == nil {
 		return nil, errors.New("failed to connect")
 	}
-	
+
 	doc, err := colle.Doc(id).Get(ctx)
 	if err != nil {
 		return nil, errors.New("存在しないシリアルコードです。")
@@ -170,10 +170,15 @@ func UpdateDocument(client *firestore.Client, document func(client *firestore.Cl
 	return nil
 }
 
-func InsertDocument(client *firestore.Client, userId string, data map[string]interface{}) (string, error) {
+func InsertDocument(client *firestore.Client, collection func(client *firestore.Client) *firestore.CollectionRef, data interface{}) (string, error) {
 	ctx := context.Background()
 
-	doc, _, err := client.Collection(userId).Add(ctx, data)
+	collec := collection(client)
+	if collec == nil {
+		return "", errors.New("failed to connect")
+	}
+
+	doc, _, err := collec.Add(ctx, data)
 	if err != nil {
 		return "", err
 	}
