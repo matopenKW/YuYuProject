@@ -4,9 +4,10 @@ import (
 	"YuYuProject/internal/dto"
 	"YuYuProject/pkg/db"
 	"YuYuProject/pkg/util"
-	"cloud.google.com/go/firestore"
 	"encoding/json"
 	"errors"
+
+	"cloud.google.com/go/firestore"
 	"github.com/mitchellh/mapstructure"
 	"gopkg.in/ini.v1"
 )
@@ -40,10 +41,13 @@ func getSerialFireBase() ([]*dto.Serial, error) {
 	collection := func(client *firestore.Client) *firestore.CollectionRef {
 		return client.Collection("serial")
 	}
-	orderBy := func() (string, firestore.Direction) {
-		return "Seq", firestore.Asc
+	option := &db.Option{
+		OrderBy: func() (string, firestore.Direction) {
+			return "Seq", firestore.Asc
+		},
 	}
-	serialMaps, err := db.SelectDocuments(client, collection, orderBy)
+
+	serialMaps, err := db.SelectDocuments(client, collection, option)
 	if err != nil {
 		return nil, err
 	}
@@ -120,15 +124,15 @@ func UpdateSerialDao() func(string, *dto.Serial) error {
 	c, _ := ini.Load(CONFIG_PATH)
 	environment := c.Section("db").Key("environment").MustInt()
 	switch environment {
-	//	case 1:
-	// return func(string, *dto.Serial) error {
-	// 	return nil
-	// }
+	case 1:
+		return func(string, *dto.Serial) error {
+			return nil
+		}
 	case 2:
 		return updateSerialFireBase
 	default:
 		return func(string, *dto.Serial) error {
-			return errors.New("daoのセットに失敗しました environment:" + string(environment))
+			return errors.New("daoのセットに失敗しました dao: UpdateSerialDao, environment:" + string(environment))
 		}
 	}
 }
