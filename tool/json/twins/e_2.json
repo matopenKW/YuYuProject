@@ -1,0 +1,142 @@
+[
+    {
+        "Seq": 1,
+        "Name": "ラリンコスメ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 2,
+        "Name": "ミラオーウェン",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 3,
+        "Name": "アガット",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 4,
+        "Name": "ダイアナ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 5,
+        "Name": "ミロワール ドゥ エンスウィート マガザン",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 6,
+        "Name": "ディーゼル",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 7,
+        "Name": "エース",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 8,
+        "Name": "ウンナナクール",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 9,
+        "Name": "4℃ブライダル",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 10,
+        "Name": "フレディグロスター",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 11,
+        "Name": "ロペピクニック",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 12,
+        "Name": "ザ・キッス",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 13,
+        "Name": "ete",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 14,
+        "Name": "4℃",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 15,
+        "Name": "コクーニスト",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 16,
+        "Name": "アネモネ",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 17,
+        "Name": "ザ・ボディショップ",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 18,
+        "Name": "ブルーム",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 19,
+        "Name": "レザンジュ",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 20,
+        "Name": "ハートダンス",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 21,
+        "Name": "プレイヤーズ自由が丘",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 22,
+        "Name": "キャスキットソン",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 23,
+        "Name": "ブルーブルーエ",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 24,
+        "Name": "エフィーズクローゼット",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 25,
+        "Name": "ビルケンシュトック",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 26,
+        "Name": "マンハッタンポーテージマチダ",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 27,
+        "Name": "パヒューマジック",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 28,
+        "Name": "ハウスオブローゼ",
+        "Acquisition": "B"
+    }
+]

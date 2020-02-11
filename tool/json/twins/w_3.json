@@ -1,0 +1,32 @@
+[
+    {
+        "Seq": 1,
+        "Name": "アフタヌーンティー・ティールーム",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 2,
+        "Name": "アフタヌーンティー・リビング",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 3,
+        "Name": "ナチュラルビューティーベーシック",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 4,
+        "Name": "ジェリービーンズ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 5,
+        "Name": "ShinQs ビューティー パレット",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 6,
+        "Name": "スタバ",
+        "Acquisition": "C"
+    }
+]

@@ -1,38 +1,1024 @@
 [
     {
-        "FloorId" : "e_1",
-        "Seq" : 1,
-        "Acquired" : true,
-        "Acquisition" : "A"
+        "SerialCode": "81495",
+        "FloorId": "e_1",
+        "Seq": 1,
+        "Acquired": true,
+        "Acquisition": "A"
     },
     {
-        "FloorId" : "e_1",
-        "Seq" : 2,
-        "Acquired" : false,
-        "Acquisition" : ""
+        "SerialCode": "51080",
+        "FloorId": "e_1",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "A"
     },
     {
-        "FloorId" : "e_1",
-        "Seq" : 3,
-        "Acquired" : true,
-        "Acquisition" : "B"
+        "SerialCode": "35311",
+        "FloorId": "e_1",
+        "Seq": 3,
+        "Acquired": true,
+        "Acquisition": "A"
     },
     {
-        "FloorId" : "e_2",
-        "Seq" : 1,
-        "Acquired" : false,
-        "Acquisition" : ""
+        "SerialCode": "02496",
+        "FloorId": "e_1",
+        "Seq": 4,
+        "Acquired": true,
+        "Acquisition": "A"
     },
     {
-        "FloorId" : "e_2",
-        "Seq" : 2,
-        "Acquired" : true,
-        "Acquisition" : "B"
+        "SerialCode": "58527",
+        "FloorId": "e_1",
+        "Seq": 5,
+        "Acquired": true,
+        "Acquisition": "A"
     },
     {
-        "FloorId" : "e_2",
-        "Seq" : 3,
-        "Acquired" : false,
-        "Acquisition" : ""
+        "SerialCode": "65288",
+        "FloorId": "e_1",
+        "Seq": 6,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "05791",
+        "FloorId": "e_1",
+        "Seq": 7,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "46634",
+        "FloorId": "e_1",
+        "Seq": 8,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "06614",
+        "FloorId": "e_1",
+        "Seq": 9,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "97527",
+        "FloorId": "e_1",
+        "Seq": 10,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "36651",
+        "FloorId": "e_1",
+        "Seq": 11,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "39462",
+        "FloorId": "e_1",
+        "Seq": 12,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "28796",
+        "FloorId": "e_1",
+        "Seq": 13,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "21884",
+        "FloorId": "e_1",
+        "Seq": 14,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "55404",
+        "FloorId": "e_1",
+        "Seq": 15,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "26211",
+        "FloorId": "e_1",
+        "Seq": 16,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "09353",
+        "FloorId": "e_1",
+        "Seq": 17,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "00197",
+        "FloorId": "e_1",
+        "Seq": 18,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "42347",
+        "FloorId": "e_1",
+        "Seq": 19,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "60831",
+        "FloorId": "e_1",
+        "Seq": 20,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "58753",
+        "FloorId": "e_1",
+        "Seq": 21,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "87531",
+        "FloorId": "e_1",
+        "Seq": 22,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "42208",
+        "FloorId": "e_1",
+        "Seq": 23,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "03794",
+        "FloorId": "e_1",
+        "Seq": 24,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "56508",
+        "FloorId": "e_1",
+        "Seq": 25,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "39321",
+        "FloorId": "e_1",
+        "Seq": 26,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "81888",
+        "FloorId": "e_1",
+        "Seq": 27,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "71719",
+        "FloorId": "e_1",
+        "Seq": 28,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "60674",
+        "FloorId": "e_1",
+        "Seq": 29,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "56934",
+        "FloorId": "e_1",
+        "Seq": 30,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "49088",
+        "FloorId": "e_1",
+        "Seq": 31,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "46510",
+        "FloorId": "e_1",
+        "Seq": 32,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "45666",
+        "FloorId": "e_1",
+        "Seq": 33,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "34356",
+        "FloorId": "e_1",
+        "Seq": 34,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "16635",
+        "FloorId": "e_1",
+        "Seq": 35,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "28592",
+        "FloorId": "e_1",
+        "Seq": 36,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "89169",
+        "FloorId": "e_1",
+        "Seq": 37,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "95902",
+        "FloorId": "e_1",
+        "Seq": 38,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "84491",
+        "FloorId": "e_1",
+        "Seq": 39,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "26775",
+        "FloorId": "e_1",
+        "Seq": 40,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "46651",
+        "FloorId": "e_1",
+        "Seq": 41,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "72470",
+        "FloorId": "e_2",
+        "Seq": 1,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "83711",
+        "FloorId": "e_2",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "12956",
+        "FloorId": "e_2",
+        "Seq": 3,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "90549",
+        "FloorId": "e_2",
+        "Seq": 4,
+        "Acquired": true,
+        "Acquisition": "A"
+    },
+    {
+        "SerialCode": "81817",
+        "FloorId": "e_2",
+        "Seq": 5,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "50710",
+        "FloorId": "e_2",
+        "Seq": 6,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "69026",
+        "FloorId": "e_2",
+        "Seq": 7,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "88309",
+        "FloorId": "e_2",
+        "Seq": 8,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "75181",
+        "FloorId": "e_2",
+        "Seq": 9,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "50117",
+        "FloorId": "e_2",
+        "Seq": 10,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "45920",
+        "FloorId": "e_2",
+        "Seq": 11,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "31185",
+        "FloorId": "e_2",
+        "Seq": 12,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "98920",
+        "FloorId": "e_2",
+        "Seq": 13,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "64410",
+        "FloorId": "e_2",
+        "Seq": 14,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "26008",
+        "FloorId": "e_2",
+        "Seq": 15,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "45851",
+        "FloorId": "e_2",
+        "Seq": 16,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "27957",
+        "FloorId": "e_2",
+        "Seq": 17,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "21003",
+        "FloorId": "e_2",
+        "Seq": 18,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "73098",
+        "FloorId": "e_2",
+        "Seq": 19,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "05415",
+        "FloorId": "e_2",
+        "Seq": 20,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "34630",
+        "FloorId": "e_2",
+        "Seq": 21,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "54961",
+        "FloorId": "e_2",
+        "Seq": 22,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "09704",
+        "FloorId": "e_2",
+        "Seq": 23,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "09554",
+        "FloorId": "e_2",
+        "Seq": 24,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "56738",
+        "FloorId": "e_2",
+        "Seq": 25,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "04649",
+        "FloorId": "e_2",
+        "Seq": 26,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "59037",
+        "FloorId": "e_2",
+        "Seq": 27,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "49392",
+        "FloorId": "e_2",
+        "Seq": 28,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "18457",
+        "FloorId": "e_3",
+        "Seq": 1,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "56439",
+        "FloorId": "e_3",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "64412",
+        "FloorId": "e_3",
+        "Seq": 3,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "98247",
+        "FloorId": "e_3",
+        "Seq": 4,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "98562",
+        "FloorId": "e_3",
+        "Seq": 5,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "59132",
+        "FloorId": "e_3",
+        "Seq": 6,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "17749",
+        "FloorId": "e_3",
+        "Seq": 7,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "76657",
+        "FloorId": "e_3",
+        "Seq": 8,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "49442",
+        "FloorId": "e_3",
+        "Seq": 9,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "58948",
+        "FloorId": "e_3",
+        "Seq": 10,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "99343",
+        "FloorId": "e_3",
+        "Seq": 11,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "42982",
+        "FloorId": "e_3",
+        "Seq": 12,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "20723",
+        "FloorId": "e_3",
+        "Seq": 13,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "84776",
+        "FloorId": "e_3",
+        "Seq": 14,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "40272",
+        "FloorId": "e_3",
+        "Seq": 15,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "59982",
+        "FloorId": "e_3",
+        "Seq": 16,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "46403",
+        "FloorId": "e_3",
+        "Seq": 17,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "28441",
+        "FloorId": "e_3",
+        "Seq": 18,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "99847",
+        "FloorId": "e_3",
+        "Seq": 19,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "21580",
+        "FloorId": "e_4",
+        "Seq": 1,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "80615",
+        "FloorId": "e_4",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "B"
+    },
+    {
+        "SerialCode": "64721",
+        "FloorId": "e_4",
+        "Seq": 3,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "56714",
+        "FloorId": "e_4",
+        "Seq": 4,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "79748",
+        "FloorId": "e_4",
+        "Seq": 5,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "20329",
+        "FloorId": "e_4",
+        "Seq": 6,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "40944",
+        "FloorId": "e_4",
+        "Seq": 7,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "86621",
+        "FloorId": "e_4",
+        "Seq": 8,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "00087",
+        "FloorId": "e_4",
+        "Seq": 9,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "82180",
+        "FloorId": "e_4",
+        "Seq": 10,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "01822",
+        "FloorId": "e_4",
+        "Seq": 11,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "32886",
+        "FloorId": "e_4",
+        "Seq": 12,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "92821",
+        "FloorId": "e_4",
+        "Seq": 13,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "54336",
+        "FloorId": "e_4",
+        "Seq": 14,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "82997",
+        "FloorId": "e_4",
+        "Seq": 15,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "77385",
+        "FloorId": "e_4",
+        "Seq": 16,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "44537",
+        "FloorId": "e_4",
+        "Seq": 17,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "33919",
+        "FloorId": "e_5",
+        "Seq": 1,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "77143",
+        "FloorId": "e_5",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "48211",
+        "FloorId": "e_5",
+        "Seq": 3,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "61837",
+        "FloorId": "e_5",
+        "Seq": 4,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "05712",
+        "FloorId": "e_5",
+        "Seq": 5,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "49854",
+        "FloorId": "e_5",
+        "Seq": 6,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "21710",
+        "FloorId": "e_5",
+        "Seq": 7,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "29818",
+        "FloorId": "e_5",
+        "Seq": 8,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "60896",
+        "FloorId": "e_5",
+        "Seq": 9,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "30111",
+        "FloorId": "e_5",
+        "Seq": 10,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "66396",
+        "FloorId": "e_5",
+        "Seq": 11,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "47274",
+        "FloorId": "e_6",
+        "Seq": 1,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "15634",
+        "FloorId": "e_7",
+        "Seq": 1,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "94346",
+        "FloorId": "w_1",
+        "Seq": 1,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "64831",
+        "FloorId": "w_1",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "64588",
+        "FloorId": "w_2",
+        "Seq": 1,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "43004",
+        "FloorId": "w_3",
+        "Seq": 1,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "91921",
+        "FloorId": "w_3",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "65840",
+        "FloorId": "w_3",
+        "Seq": 3,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "36866",
+        "FloorId": "w_3",
+        "Seq": 4,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "61845",
+        "FloorId": "w_3",
+        "Seq": 5,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "12726",
+        "FloorId": "w_3",
+        "Seq": 6,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "37044",
+        "FloorId": "w_4",
+        "Seq": 1,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "98503",
+        "FloorId": "w_4",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "22522",
+        "FloorId": "w_4",
+        "Seq": 3,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "60906",
+        "FloorId": "w_5",
+        "Seq": 1,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "73697",
+        "FloorId": "w_5",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "15306",
+        "FloorId": "w_6",
+        "Seq": 1,
+        "Acquired": false,
+        "Acquisition": "N"
+    },
+    {
+        "SerialCode": "85924",
+        "FloorId": "w_6",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "21784",
+        "FloorId": "w_7",
+        "Seq": 1,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "04818",
+        "FloorId": "w_7",
+        "Seq": 2,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "60700",
+        "FloorId": "w_7",
+        "Seq": 3,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "56353",
+        "FloorId": "w_7",
+        "Seq": 4,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "17427",
+        "FloorId": "w_7",
+        "Seq": 5,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "16157",
+        "FloorId": "w_7",
+        "Seq": 6,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "45566",
+        "FloorId": "w_7",
+        "Seq": 7,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "81921",
+        "FloorId": "w_7",
+        "Seq": 8,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "68206",
+        "FloorId": "w_7",
+        "Seq": 9,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "45555",
+        "FloorId": "w_7",
+        "Seq": 10,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "69268",
+        "FloorId": "w_7",
+        "Seq": 11,
+        "Acquired": true,
+        "Acquisition": "C"
+    },
+    {
+        "SerialCode": "95646",
+        "FloorId": "w_8",
+        "Seq": 1,
+        "Acquired": false,
+        "Acquisition": "N"
     }
 ]
