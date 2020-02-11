@@ -58,7 +58,7 @@ func getSerial() (map[string]*dto.Serial, error) {
 
 	for _, v := range serialList {
 		var dto dto.Serial
-		err := mapToStruct(v, &dto)
+		err := util.MapToStruct(v, &dto)
 		if err != nil {
 			return nil, err
 		}
@@ -68,16 +68,4 @@ func getSerial() (map[string]*dto.Serial, error) {
 	}
 
 	return serialMap, nil
-}
-
-func mapToStruct(m map[string]interface{}, val interface{}) error {
-	tmp, err := json.Marshal(m)
-	if err != nil {
-		return err
-	}
-	err = json.Unmarshal(tmp, val)
-	if err != nil {
-		return err
-	}
-	return nil
 }

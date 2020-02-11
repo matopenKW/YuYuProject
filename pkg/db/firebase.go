@@ -1,17 +1,32 @@
 package db
 
 import (
-	"cloud.google.com/go/firestore"
 	"context"
 	"errors"
-	"firebase.google.com/go"
+	"log"
+
+	"cloud.google.com/go/firestore"
+	firebase "firebase.google.com/go"
 	"firebase.google.com/go/auth"
 	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
-	"log"
 )
 
 const keyjson = "pkg/conf/key.json"
+
+// 行く行くはリスト項目で持つのがよいのでは
+type Option struct {
+	Where   func() (fieldName string, condition string, item interface{})
+	OrderBy func() (string, firestore.Direction)
+}
+
+func getWhere(opt *Option) func() (string, string, interface{}) {
+	return opt.Where
+}
+
+func getOrderBy(opt *Option) func() (string, firestore.Direction) {
+	return opt.OrderBy
+}
 
 func OpenAuth() (*auth.Client, error) {
 	ctx := context.Background()
@@ -83,7 +98,7 @@ func SelectDocument(client *firestore.Client, id string, collection func(client 
 	return data, nil
 }
 
-func SelectDocuments(client *firestore.Client, collection func(client *firestore.Client) *firestore.CollectionRef, orderBy func() (string, firestore.Direction)) ([]map[string]interface{}, error) {
+func SelectDocuments(client *firestore.Client, collection func(client *firestore.Client) *firestore.CollectionRef, opt *Option) ([]map[string]interface{}, error) {
 	ctx := context.Background()
 
 	list := make([]map[string]interface{}, 0, 10)
@@ -93,12 +108,15 @@ func SelectDocuments(client *firestore.Client, collection func(client *firestore
 		return nil, errors.New("failed to connect")
 	}
 
-	var iter *firestore.DocumentIterator
-	if orderBy != nil {
-		iter = colle.OrderBy(orderBy()).Documents(ctx)
-	} else {
-		iter = colle.Documents(ctx)
+	query := colle.Query
+	if opt.Where != nil {
+		query = query.Where(opt.Where())
 	}
+	if opt.OrderBy != nil {
+		query = query.OrderBy(opt.OrderBy())
+	}
+
+	iter := query.Documents(ctx)
 
 	for {
 		doc, err := iter.Next()
@@ -183,12 +201,12 @@ func InsertDocument(client *firestore.Client, collection func(client *firestore.
 
 	log.Println("Insert Document:")
 	log.Println(data)
-  
-  collec := collection(client)
+
+	collec := collection(client)
 	if collec == nil {
 		return "", errors.New("failed to connect")
 	}
-  
+
 	doc, _, err := collec.Add(ctx, data)
 
 	if err != nil {

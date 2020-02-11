@@ -2,28 +2,31 @@ package apps
 
 import (
 	"YuYuProject/internal/dao"
-	"errors"
+	"YuYuProject/pkg/util"
 	"log"
 	"net/http"
+
+	"firebase.google.com/go/auth"
 )
 
-func RegistSerial(req *http.Request) error {
+func RegistSerial(userRec *auth.UserRecord, req *http.Request) error {
 
 	req.ParseForm()
 
-	// TODO チームIDはキャッシュ、シリアルコードは画面から取得する
-	teamId := "C"
+	getSingleTeamDao := dao.GetSingleTeamDao()
+	team, err := getSingleTeamDao(userRec.UID)
+	if err != nil {
+		return err
+	}
 
-	log.Println(req.Form["serialCode"][0])
-
-	if req.Form["serialCode"] == nil || req.Form["serialCode"][0] == "" {
-		return errors.New("シリアルコードが空です！")
+	if err := util.CheckNil(req.Form["serialCode"], "シリアルコード"); err != nil {
+		return err
 	}
 
 	serialCode := req.Form["serialCode"][0]
 	log.Println(serialCode)
 
-	err := regist(teamId, serialCode)
+	err = regist(team.Id, serialCode)
 	if err != nil {
 		log.Println(err.Error())
 		return err
