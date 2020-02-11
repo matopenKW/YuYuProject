@@ -1,0 +1,57 @@
+[
+    {
+        "Seq": 1,
+        "Name": "オリヒカ",
+        "Acquisition": "N"
+    },
+    {
+        "Seq": 2,
+        "Name": "クーレンズ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 3,
+        "Name": "クイックシルバー",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 4,
+        "Name": "トップオブザヒル",
+        "Acquisition": "N"
+    },
+    {
+        "Seq": 5,
+        "Name": "コーエン",
+        "Acquisition": "N"
+    },
+    {
+        "Seq": 6,
+        "Name": "ABCマート",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 7,
+        "Name": "チチカカ",
+        "Acquisition": "N"
+    },
+    {
+        "Seq": 8,
+        "Name": "マーレマーレ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 9,
+        "Name": "エリックカールプラザ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 10,
+        "Name": "マーキーズ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 11,
+        "Name": "イーストボーイ",
+        "Acquisition": "C"
+    }
+]

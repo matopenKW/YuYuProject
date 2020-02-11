@@ -1,0 +1,207 @@
+[
+    {
+        "Seq": 1,
+        "Name": "イタリアントマトカフェジュニア",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 2,
+        "Name": "アンデルセン",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 3,
+        "Name": "崎陽軒",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 4,
+        "Name": "ゴディバ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 5,
+        "Name": "銀座コージーコーナー",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 6,
+        "Name": "ルピシア",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 7,
+        "Name": "紀伊國屋",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 8,
+        "Name": "吉兆庵",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 9,
+        "Name": "麗茶庵",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 10,
+        "Name": "美容セボン",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 11,
+        "Name": "３１アイスクリーム",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 12,
+        "Name": "カルディ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 13,
+        "Name": "サザエ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 14,
+        "Name": "くくる",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 15,
+        "Name": "とんかつ和幸",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 16,
+        "Name": "日本一",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 17,
+        "Name": "おむすび／古市庵",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 18,
+        "Name": "グリーングルメ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 19,
+        "Name": "ローゼンハイム",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 20,
+        "Name": "ファクトリーシン",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 21,
+        "Name": "チャプチーノ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 22,
+        "Name": "FLO",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 23,
+        "Name": "鎌倉歐林洞",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 24,
+        "Name": "モロゾフ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 25,
+        "Name": "ガトー・ド・ボワイヤージュ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 26,
+        "Name": "メリーチョコレート",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 27,
+        "Name": "東京凮月堂",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 28,
+        "Name": "伊藤園抹茶スタンド",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 29,
+        "Name": "中央軒煎餅",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 30,
+        "Name": "豆芳",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 31,
+        "Name": "信濃屋",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 32,
+        "Name": "諸国おかしプラザ",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 33,
+        "Name": "となりに。日本百貨店",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 34,
+        "Name": "好餃子",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 35,
+        "Name": "サンジェルマン",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 36,
+        "Name": "銀座ハゲ天",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 37,
+        "Name": "味の浜藤",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 38,
+        "Name": "たごさく",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 39,
+        "Name": "まぐろ一番本舗",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 40,
+        "Name": "かげん鮨",
+        "Acquisition": "A"
+    },
+    {
+        "Seq": 41,
+        "Name": "昇龍園",
+        "Acquisition": "A"
+    }
+]

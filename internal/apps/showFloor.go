@@ -3,12 +3,19 @@ package apps
 import (
 	"YuYuProject/internal/dao"
 	"YuYuProject/internal/dto"
+	"YuYuProject/pkg/util"
 	"log"
+	"net/http"
 )
 
-func GetFloorData() (map[string]interface{}, error) {
+func GetFloorData(req *http.Request) (map[string]interface{}, error) {
 
-	res, err := getData("e_1")
+	req.ParseForm()
+	if err := util.CheckNil(req.Form["floorId"], "フロアId"); err != nil {
+		return nil, err
+	}
+
+	res, err := GetData(req.Form["floorId"][0])
 	if err != nil {
 		log.Println(err.Error())
 		return nil, err
@@ -17,7 +24,7 @@ func GetFloorData() (map[string]interface{}, error) {
 	return res, nil
 }
 
-func getData(floorId string) (map[string]interface{}, error) {
+func GetData(floorId string) (map[string]interface{}, error) {
 
 	teamDao := dao.GetTeamDao()
 	teamList, err := teamDao()
@@ -52,11 +59,14 @@ func getData(floorId string) (map[string]interface{}, error) {
 	barList := make([]*dto.Team, 0, 0)
 	sumRate := 0
 	for _, team := range teamList {
+
 		var bar = &dto.Team{}
 		bar = team
 		bar.All = (cntMap[team.Id] * 100) / len(floorList)
+		if bar.All != 0 {
+			barList = append(barList, bar)
+		}
 		sumRate += bar.All
-		barList = append(barList, bar)
 	}
 	if sumRate != 100 {
 		var bar = &dto.Team{}
@@ -65,7 +75,7 @@ func getData(floorId string) (map[string]interface{}, error) {
 		bar.All = 100 - sumRate
 		barList = append(barList, bar)
 	}
-	
+
 	return map[string]interface{}{
 		"barList":     barList,
 		"tenantoList": floorList,

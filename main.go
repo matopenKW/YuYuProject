@@ -3,9 +3,10 @@ package main
 import (
 	"YuYuProject/internal/apps"
 	"encoding/json"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -19,7 +20,7 @@ func main() {
 	router.GET("/registSerial", registSerial)
 	router.GET("/ragistProduct", ragistProduct)
 
-  router.GET("/updateTenantoTeam", updateTenantoTeam)
+	router.GET("/updateTenantoTeam", updateTenantoTeam)
 
 	router.Run()
 }
@@ -37,7 +38,7 @@ func index(ctx *gin.Context) {
 
 func showFloor(ctx *gin.Context) {
 
-	res, err := apps.GetFloorData()
+	res, err := apps.GetFloorData(ctx.Request)
 	if err != nil {
 		log.Println(err.Error())
 		ctx.JSON(http.StatusInternalServerError, "")
@@ -80,7 +81,7 @@ func registSerial(ctx *gin.Context) {
 
 func ragistProduct(ctx *gin.Context) {
 	err := apps.RegistProduct(ctx.Request)
-  
+
 	var satus int
 	var msg string
 
@@ -102,7 +103,7 @@ func ragistProduct(ctx *gin.Context) {
 	}
 }
 
-func updateTenantoTeam(ctx *gin.Context){
+func updateTenantoTeam(ctx *gin.Context) {
 	err := apps.UpdateTenantoTeam()
 
 	var satus int
