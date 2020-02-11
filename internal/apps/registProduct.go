@@ -3,7 +3,7 @@ package apps
 import (
 	"YuYuProject/internal/dao"
 	"YuYuProject/internal/dto"
-	"errors"
+	"YuYuProject/pkg/util"
 	"log"
 	"net/http"
 	"time"
@@ -16,15 +16,15 @@ func RegistProduct(req *http.Request) error {
 	// TODO チームIDはキャッシュ、シリアルコードは画面から取得する
 	teamId := "C"
 
-	if err := checkNil(req.Form["tenantId"], "テナントId"); err != nil {
+	if err := util.CheckNil(req.Form["tenantId"], "テナントId"); err != nil {
 		return err
 	}
 
-	if err := checkNil(req.Form["productName"], "商品名"); err != nil {
+	if err := util.CheckNil(req.Form["productName"], "商品名"); err != nil {
 		return err
 	}
 
-	if err := checkNil(req.Form["productNo"], "商品番号"); err != nil {
+	if err := util.CheckNil(req.Form["productNo"], "商品番号"); err != nil {
 		return err
 	}
 
@@ -52,14 +52,6 @@ func registProduct(teamId, tenantId, productName, productNo string) error {
 	err := productDao(teamId, tenantId, product)
 	if err != nil {
 		return err
-	}
-
-	return nil
-}
-
-func checkNil(strs []string, errObjName string) error {
-	if strs == nil || strs[0] == "" {
-		return errors.New(errObjName + "が空です！")
 	}
 
 	return nil

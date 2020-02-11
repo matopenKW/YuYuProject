@@ -1,15 +1,16 @@
 package dao
 
 import (
-	"cloud.google.com/go/firestore"
 	"YuYuProject/internal/dto"
-	"YuYuProject/pkg/util"
 	"YuYuProject/pkg/db"
+	"YuYuProject/pkg/util"
 	"encoding/json"
 	"errors"
-	"gopkg.in/ini.v1"
-	"github.com/mitchellh/mapstructure"
 	"strconv"
+
+	"cloud.google.com/go/firestore"
+	"github.com/mitchellh/mapstructure"
+	"gopkg.in/ini.v1"
 )
 
 func GetTenatoDao() func(floorId string) ([]*dto.Tenanto, error) {
@@ -30,7 +31,7 @@ func GetTenatoDao() func(floorId string) ([]*dto.Tenanto, error) {
 }
 
 func getTenatoLocal(floorId string) ([]*dto.Tenanto, error) {
-	bytes, err := util.ReadFile("tool/json/" + floorId + ".json")
+	bytes, err := util.ReadFile("tool/json/twins/" + floorId + ".json")
 	if err != nil {
 		return nil, err
 	}
@@ -44,10 +45,10 @@ func getTenatoLocal(floorId string) ([]*dto.Tenanto, error) {
 
 func getTenatoFireBase(floorId string) ([]*dto.Tenanto, error) {
 	client, err := db.OpenFirestore()
-	collection := func (client *firestore.Client)(*firestore.CollectionRef){
+	collection := func(client *firestore.Client) *firestore.CollectionRef {
 		return client.Collection("building").Doc("twins").Collection(floorId)
 	}
-	orderBy := func ()(string, firestore.Direction){
+	orderBy := func() (string, firestore.Direction) {
 		return "Seq", firestore.Asc
 	}
 	tenantoMaps, err := db.SelectDocuments(client, collection, orderBy)
@@ -66,7 +67,7 @@ func getTenatoFireBase(floorId string) ([]*dto.Tenanto, error) {
 	return tenantoList, nil
 }
 
-func UpdateTenantoDao() func(string, *dto.Tenanto) ( error) {
+func UpdateTenantoDao() func(string, *dto.Tenanto) error {
 
 	c, _ := ini.Load(CONFIG_PATH)
 	environment := c.Section("db").Key("environment").MustInt()
@@ -74,22 +75,22 @@ func UpdateTenantoDao() func(string, *dto.Tenanto) ( error) {
 	case 2:
 		return updateTenantoFireBase
 	default:
-		return func(string, *dto.Tenanto) (error) {
+		return func(string, *dto.Tenanto) error {
 			return errors.New("daoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }
 
-func updateTenantoFireBase(floorId string, tenanto *dto.Tenanto)(error){
+func updateTenantoFireBase(floorId string, tenanto *dto.Tenanto) error {
 	client, err := db.OpenFirestore()
 	if err != nil {
 		return err
 	}
-	document := func(client *firestore.Client) *firestore.DocumentRef{
+	document := func(client *firestore.Client) *firestore.DocumentRef {
 		return client.Collection("building").Doc("twins").Collection(floorId).Doc(strconv.Itoa(tenanto.Seq))
 	}
 	err = db.UpdateDocument(client, document, tenanto)
-	
+
 	if err != nil {
 		return err
 	}

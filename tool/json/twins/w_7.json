@@ -1,0 +1,57 @@
+[
+    {
+        "Seq": 1,
+        "Name": "ツインズアイクリニック",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 2,
+        "Name": "エースコンタクト",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 3,
+        "Name": "ほけん百花",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 4,
+        "Name": "もみ処らく屋",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 5,
+        "Name": "ジュリア・オージェ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 6,
+        "Name": "てもみん",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 7,
+        "Name": "ファストネイル",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 8,
+        "Name": "英会話イーオン",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 9,
+        "Name": "JTB",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 10,
+        "Name": "ゼクシィ相談カウンター",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 11,
+        "Name": "ミュゼプラチナム",
+        "Acquisition": "C"
+    }
+]
