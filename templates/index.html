@@ -44,6 +44,11 @@
 <body>
 
 	<div class="container-fluid pt-5">
+		{{if .teamIdView}}
+		<h3>Team: {{.team.Id}}</h3>
+		{{else}}
+		<h3>セッションがきれました！</h3>
+		{{end}}
 		<div class="row m-1">
 			<div class="billding col-5">
 				<div class="west row text-center">

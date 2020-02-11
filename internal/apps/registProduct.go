@@ -7,14 +7,19 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"firebase.google.com/go/auth"
 )
 
-func RegistProduct(req *http.Request) error {
+func RegistProduct(userRec *auth.UserRecord, req *http.Request) error {
 
 	req.ParseForm()
 
-	// TODO チームIDはキャッシュ、シリアルコードは画面から取得する
-	teamId := "C"
+	getSingleTeamDao := dao.GetSingleTeamDao()
+	team, err := getSingleTeamDao(userRec.UID)
+	if err != nil {
+		return err
+	}
 
 	if err := util.CheckNil(req.Form["tenantId"], "テナントId"); err != nil {
 		return err
@@ -32,7 +37,7 @@ func RegistProduct(req *http.Request) error {
 	productName := req.Form["productName"][0]
 	productNo := req.Form["productNo"][0]
 
-	err := registProduct(teamId, tenantId, productName, productNo)
+	err = registProduct(team.Id, tenantId, productName, productNo)
 	if err != nil {
 		log.Println(err.Error())
 		return err
