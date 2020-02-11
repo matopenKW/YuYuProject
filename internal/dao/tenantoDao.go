@@ -48,10 +48,12 @@ func getTenatoFireBase(floorId string) ([]*dto.Tenanto, error) {
 	collection := func(client *firestore.Client) *firestore.CollectionRef {
 		return client.Collection("building").Doc("twins").Collection(floorId)
 	}
-	orderBy := func() (string, firestore.Direction) {
-		return "Seq", firestore.Asc
+	option := &db.Option{
+		OrderBy: func() (string, firestore.Direction) {
+			return "Seq", firestore.Asc
+		},
 	}
-	tenantoMaps, err := db.SelectDocuments(client, collection, orderBy)
+	tenantoMaps, err := db.SelectDocuments(client, collection, option)
 	if err != nil {
 		return nil, err
 	}
