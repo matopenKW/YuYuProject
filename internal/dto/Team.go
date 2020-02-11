@@ -8,3 +8,11 @@ type Team struct {
 	West      int    `json:",omitempty"`
 	East      int    `json:",omitempty"`
 }
+
+type TeamProduct struct {
+	*Team
+	TenantId    string
+	ProductList []*Product
+	ProductNum  int
+	Rate        int
+}
