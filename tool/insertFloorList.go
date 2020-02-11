@@ -11,8 +11,6 @@ import (
 
 func InsertFloorList(flootId string) error {
 
-	log.Println("start")
-
 	firestore, err := db.OpenFirestore()
 	if err != nil {
 		return errors.New("connection failed for CloudFireStore , error: " + err.Error())
@@ -25,7 +23,7 @@ func InsertFloorList(flootId string) error {
 		log.Println(v)
 
 		ctx := context.Background()
-		ref := firestore.Collection("test_building").Doc("twins").Collection(flootId)
+		ref := firestore.Collection("building").Doc("twins").Collection(flootId)
 		doc := ref.Doc(strconv.Itoa(i + 1))
 
 		_, err := doc.Set(ctx, v)
@@ -33,8 +31,6 @@ func InsertFloorList(flootId string) error {
 			return err
 		}
 	}
-
-	log.Println("success")
 
 	return nil
 

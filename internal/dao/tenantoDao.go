@@ -46,7 +46,7 @@ func getTenatoLocal(floorId string) ([]*dto.Tenanto, error) {
 func getTenatoFireBase(floorId string) ([]*dto.Tenanto, error) {
 	client, err := db.OpenFirestore()
 	collection := func(client *firestore.Client) *firestore.CollectionRef {
-		return client.Collection("test_building").Doc("twins").Collection(floorId)
+		return client.Collection("building").Doc("twins").Collection(floorId)
 	}
 	orderBy := func() (string, firestore.Direction) {
 		return "Seq", firestore.Asc
