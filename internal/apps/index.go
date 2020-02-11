@@ -3,6 +3,7 @@ package apps
 import (
 	"YuYuProject/internal/dao"
 	"YuYuProject/internal/dto"
+	"YuYuProject/pkg/enum"
 	"log"
 
 	"github.com/gin-contrib/sessions"
@@ -20,25 +21,35 @@ func ShowMainPage(ctx *gin.Context) (map[string]interface{}, error) {
 		teamIdView = false
 	}
 
-	list, err := getBarList()
-	if err != nil {
-		return nil, err
-	}
-
-	return map[string]interface{}{
-		"list":       list,
-		"teamIdView": teamIdView,
-		"team":       team,
-	}, nil
-}
-
-func getBarList() ([]*dto.Team, error) {
-
 	teamDao := dao.GetTeamDao()
 	teamList, err := teamDao()
 	if err != nil {
 		return nil, err
 	}
+
+	list, err := getBarList(teamList)
+	if err != nil {
+		return nil, err
+	}
+
+	productMap, err := getProductBarList(teamList)
+	if err != nil {
+		return nil, err
+	}
+
+	log.Println("productList :", productMap)
+
+	return map[string]interface{}{
+		"list":         list,
+		"productList1": productMap[enum.Nitori],
+		"productList2": productMap[enum.Daiso],
+		"productList3": productMap[enum.Hands],
+		"teamIdView":   teamIdView,
+		"team":         team,
+	}, nil
+}
+
+func getBarList(teamList []*dto.Team) ([]*dto.Team, error) {
 
 	var westCnt, eastCnt int
 	var barList []*dto.Team
@@ -60,11 +71,48 @@ func getBarList() ([]*dto.Team, error) {
 	bar.All = (bar.West + bar.East) / 2
 	barList = append(barList, bar)
 
-	for _, v := range barList {
-		log.Println(v)
-	}
-
 	return barList, nil
+}
+
+func getProductBarList(teamList []*dto.Team) (map[string][]*dto.TeamProduct, error) {
+
+	productBarMap := make(map[string][]*dto.TeamProduct)
+
+	tenantIdList := [3]string{enum.Nitori, enum.Daiso, enum.Hands}
+
+	getProductDao := dao.GetProductDao()
+	for _, tenantId := range tenantIdList {
+
+		var productBarList []*dto.TeamProduct
+		var total int
+		if tenantId == enum.Daiso {
+			total = 15
+		} else {
+			total = 30
+		}
+
+		for _, v := range teamList {
+			productList, err := getProductDao(v.Id, tenantId)
+			if err != nil {
+				return nil, err
+			}
+			productNum := len(productList)
+			rate := (productNum * 100) / total
+			teamProduct := &dto.TeamProduct{
+				v,
+				tenantId,
+				productList,
+				productNum,
+				rate,
+			}
+
+			productBarList = append(productBarList, teamProduct)
+
+		}
+
+		productBarMap[tenantId] = productBarList
+	}
+	return productBarMap, nil
 }
 
 // 画面描画はセッション切れててもOK

@@ -89,7 +89,12 @@
 			</div>
 		</div>
 	</div>
-	<div id="graph-area">
+	<div id="view-graph-area">
+		<div class="row text-center">
+			<button type="button" id="btn-view-graph-area" class="btn btn-primary">チーム状況！</button>
+		</div>
+	</div>
+	<div id="graph-area" class="view-graph-toggle">
 		<h3>全体</h3>
 		<div class="row">
 			{{range .list}}
@@ -106,6 +111,31 @@
 		<div class="row">
 			{{range .list}}
 				<div class="{{.ClassName}} text-center" style="width: {{.East}}%;">{{.Id}} : {{.East}}%</div>
+			{{end}}
+		</div>
+	</div>
+	<div id="view-product-graph-area">
+		<div class="row text-center">
+			<button type="button" class="btn btn-primary">フリーアイテム陣地</button>
+		</div>
+	</div>
+	<div id="product-graph-area" class="view-product-graph-toggle">
+		<h3>ニトリ</h3>
+		<div class="row">
+			{{range .productList1}}
+				<div class="{{.ClassName}} text-center product-bar" style="width: {{.Rate}}%;">{{.Id}} : {{.ProductNum}}個</div>
+			{{end}}
+		</div>
+		<h3>ダイソー</h3>
+		<div class="row">
+			{{range .productList2}}
+				<div class="{{.ClassName}} text-center product-bar" style="width: {{.Rate}}%;">{{.Id}} : {{.ProductNum}}個</div>
+			{{end}}
+		</div>
+		<h3>ハンズ</h3>
+		<div class="row">
+			{{range .productList3}}
+				<div class="{{.ClassName}} text-center product-bar" style="width: {{.Rate}}%;">{{.Id}} : {{.ProductNum}}個</div>
 			{{end}}
 		</div>
 	</div>

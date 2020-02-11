@@ -7,11 +7,19 @@ $(function(){
         var teamId = $(this).attr('team-id');
 
         $('#tenant p').hide();
-        $('#tenant').find('.' + teamId).parent('p').show();
+        $('#tenant').find('.' + teamId).parent('p').show('normal');
     });
 
     $(document).on('click','#btnRagistSerial', function(){
         showRegistSerialModal();
+    });
+
+    $(document).on('click','#view-graph-area', function(){
+        $(".view-graph-toggle").toggle('normal');
+    });
+
+    $(document).on('click','#view-product-graph-area', function(){
+        $(".view-product-graph-toggle").toggle('normal');
     });
 
     $(document).on('click', '#modalBtnRagist', function(){
@@ -93,12 +101,18 @@ function showRegistSerialModal(){
 
 function ragistSerial(){
     var serialCode = $('#serial-code-text').val();
+    if (!serialCode) {
+        alert('しりあるこーどがみにゅうりょくです。');
+        return
+    }
+
     var data = {
         serialCode : serialCode
     }
     var done = function(data){
         var obj = JSON.parse(data);
         alert(obj.message);
+        $('#serial-modal').modal('hide');
     }
     var fail = function(data){
         var obj = JSON.parse(data.responseJSON);
@@ -109,16 +123,31 @@ function ragistSerial(){
 }
 
 function ragistProduct(){
-    var $tenant = $('.tenant:checked')
+    var $tenant = $('.tenant:checked');
+    var productName = $('#productName').val();
+    var productNo = $('#productNo').val();
+    if (!$tenant[0]){
+        alert('テナントを選択から出直してね');
+        return
+    }
+    if (productName === '') {
+        alert('商品名が空です。入力の仕方分かりますか？？');
+        return
+    }
+    if (productNo === '') {
+        alert('商品番号が空です。この並びだと普通入れると思うんですけど…');
+        return
+    }
 
     var data = {
         tenantId: $tenant.val(),
-        productName: $('#productName').val(),
+        productName: productName,
         productNo: $('#productNo').val()
     }
     var done = function(data){
         var obj = JSON.parse(data);
         alert(obj.message);
+        $('#serial-modal').modal('hide');
     }
     var fail = function(data){
         var obj = JSON.parse(data.responseJSON);
