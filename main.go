@@ -6,16 +6,30 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	router := gin.Default()
 	router.Static("/assets", "./assets")
-
 	router.LoadHTMLGlob("templates/*.html")
 
-	router.GET("/", index)
+	// setting session
+	store := cookie.NewStore([]byte("secret"))
+	router.Use(sessions.Sessions("session", store))
+
+	router.GET("/", viewLogin)
+	router.POST("/", viewLogin)
+	router.GET("/login", viewLogin)
+	router.POST("/login", viewLogin)
+
+	// ログイン処理
+	router.POST("/login:cmd/login", login)
+
+	router.GET("/index", index)
+
 	router.POST("/floor", showFloor)
 	router.GET("/registSerial", registSerial)
 	router.GET("/ragistProduct", ragistProduct)
@@ -23,6 +37,20 @@ func main() {
 	router.GET("/updateTenantoTeam", updateTenantoTeam)
 
 	router.Run()
+}
+
+func viewLogin(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "login.html", gin.H{})
+}
+
+func login(ctx *gin.Context) {
+	err := apps.Login(ctx)
+	if err != nil {
+		log.Println(err)
+		ctx.HTML(http.StatusInternalServerError, "505.html", gin.H{})
+	} else {
+		ctx.Redirect(http.StatusMovedPermanently, "/index")
+	}
 }
 
 func index(ctx *gin.Context) {
