@@ -85,23 +85,33 @@ svg image {
 	background-color: rgb(61, 111, 161);
 }
 
-#graph-area * {
-	font-size: 2vh;
-}
-
-#graph-area {
-	background-color: #fff;
-	padding: 15px;
-}
-
-#graph-area .row {
-	height: 110px;
-}
-
+#view-graph-area .row ,
+#view-product-graph-area .row ,
 #ragist-serial .row {
 	width: 100%;
     flex-flow: column;
     margin: 0;
+}
+
+#view-graph-area .btn ,
+#view-product-graph-area .btn ,
+#ragist-serial .btn {
+	font-size: 3vh;
+}
+
+#graph-area,
+#product-graph-area {
+	padding: 15px;
+	display: none;
+}
+
+#graph-area *,
+#product-graph-area *{
+	font-size: 2vh;
+}
+
+#graph-area .row {
+	height: 110px;
 }
 
 .a_team, .b_team, .c_team, .none_team {
@@ -122,6 +132,11 @@ svg image {
 
 .none_team {
 	background-color: rgba(82, 78, 78, 0.568)
+}
+
+#product-graph-area .product-bar {
+	max-width: 33.3%;
+	min-width: 1%;
 }
 
 #status-bar {

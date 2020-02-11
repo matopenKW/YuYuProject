@@ -33,6 +33,8 @@ func RegistProduct(userRec *auth.UserRecord, req *http.Request) error {
 		return err
 	}
 
+	log.Println("team : ", team)
+
 	tenantId := req.Form["tenantId"][0]
 	productName := req.Form["productName"][0]
 	productNo := req.Form["productNo"][0]
@@ -53,7 +55,7 @@ func registProduct(teamId, tenantId, productName, productNo string) error {
 	}
 	log.Println(product)
 
-	productDao := dao.GetProductDao()
+	productDao := dao.RagistProductDao()
 	err := productDao(teamId, tenantId, product)
 	if err != nil {
 		return err
