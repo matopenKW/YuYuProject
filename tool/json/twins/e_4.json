@@ -1,0 +1,87 @@
+[
+    {
+        "Seq": 1,
+        "Name": "椿屋カフェ",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 2,
+        "Name": "トリンプ",
+        "Acquisition": "B"
+    },
+    {
+        "Seq": 3,
+        "Name": "ビュルデサボン",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 4,
+        "Name": "アンティローザホリデイ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 5,
+        "Name": "スリーコインズ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 6,
+        "Name": "ラフィネ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 7,
+        "Name": "ドクターストレッチ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 8,
+        "Name": "じぶんまくら",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 9,
+        "Name": "オーサムストアー",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 10,
+        "Name": "しゃら",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 11,
+        "Name": "フィットフィット",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 12,
+        "Name": "ハヴァナイストリップ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 13,
+        "Name": "ホルファム",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 14,
+        "Name": "ドゥクラッセ",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 15,
+        "Name": "パラスパレス",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 16,
+        "Name": "SM2",
+        "Acquisition": "C"
+    },
+    {
+        "Seq": 17,
+        "Name": "インデックス",
+        "Acquisition": "C"
+    }
+]
