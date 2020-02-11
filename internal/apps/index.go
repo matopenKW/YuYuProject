@@ -4,17 +4,31 @@ import (
 	"YuYuProject/internal/dao"
 	"YuYuProject/internal/dto"
 	"log"
+
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-gonic/gin"
 )
 
-func ShowMainPage() (map[string]interface{}, error) {
+func ShowMainPage(ctx *gin.Context) (map[string]interface{}, error) {
+
+	session := sessions.Default(ctx)
+	userId := session.Get("userId")
+	team := getUser(userId)
+
+	teamIdView := true
+	if team == nil {
+		teamIdView = false
+	}
+
 	list, err := getBarList()
 	if err != nil {
 		return nil, err
 	}
 
-	log.Println(list)
 	return map[string]interface{}{
-		"list": list,
+		"list":       list,
+		"teamIdView": teamIdView,
+		"team":       team,
 	}, nil
 }
 
@@ -51,4 +65,23 @@ func getBarList() ([]*dto.Team, error) {
 	}
 
 	return barList, nil
+}
+
+// 画面描画はセッション切れててもOK
+func getUser(userId interface{}) *dto.Team {
+	log.Println("getUser start")
+	defer log.Println("getUser end")
+
+	if userId == nil {
+		log.Println("UserId Is null")
+		return nil
+	}
+	getSingleTeamDao := dao.GetSingleTeamDao()
+	team, err := getSingleTeamDao(userId.(string))
+
+	if err != nil {
+		log.Println(err)
+		return nil
+	}
+	return team
 }
