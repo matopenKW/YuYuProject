@@ -166,6 +166,8 @@ function ragistProduct(){
 function showProductDetil(obj){
     var teamName = $(obj).attr('class-data');
     var tenantId = $(obj).attr('tenant-id');
+
+    var $targetObj = $('.product-detil.' + teamName + '.' + tenantId);
     $('.product-detil').hide(viewSpeed);
-    $('.product-detil.' + teamName + '.' + tenantId).show(viewSpeed);
+    $targetObj.show(viewSpeed);
 }
