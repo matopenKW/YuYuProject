@@ -42,6 +42,7 @@ func main() {
 
 	// WebAPI
 	router.GET("/updateTenantoTeam", updateTenantoTeam)
+	router.GET("/updateTeamRate", updateTeamRate)
 
 	router.Run()
 }
@@ -160,6 +161,23 @@ func ragistProduct(ctx *gin.Context, userRec *auth.UserRecord) {
 
 func updateTenantoTeam(ctx *gin.Context) {
 	err := apps.UpdateTenantoTeam()
+
+	var satus int
+	var msg string
+
+	if err != nil {
+		satus = http.StatusInternalServerError
+		msg = err.Error()
+	} else {
+		satus = http.StatusOK
+		msg = "成功しました。"
+	}
+
+	ctx.JSON(satus, createJsonMessage(msg))
+}
+
+func updateTeamRate(ctx *gin.Context) {
+	err := apps.UpdateTeamRate()
 
 	var satus int
 	var msg string
