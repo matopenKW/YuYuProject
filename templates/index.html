@@ -11,15 +11,18 @@
 <body>
 
 	<div class="container-fluid pt-5">
-		{{if .teamIdView}}
-		<h3>Team: {{.team.Id}}</h3>
-		{{else}}
-		<h3>セッションがきれました！</h3>
-		{{end}}
+		<div class="row mb-5">
+			<div class="col">
+				{{if .teamIdView}}
+				<h3>Team: {{.team.Id}}</h3>
+				{{else}}
+				<h3>セッションがきれました！</h3>
+				{{end}}
+			</div>
+		</div>
 		<div class="row m-1">
 			<div class="billding col-5">
 				<div class="west row text-center">
-					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12" floor-id="w_8">8F</div>
 					<div class="floor col-12" floor-id="w_7">7F</div>
 					<div class="floor col-12" floor-id="w_6">6F</div>
@@ -28,12 +31,10 @@
 					<div class="floor col-12" floor-id="w_3">3F</div>
 					<div class="floor col-12" floor-id="w_2">2F</div>
 					<div class="floor col-12" floor-id="w_1">1F</div>
-					<div class="floor col-12 blank">blank</div>
 				</div>
 			</div>
 			<div class="center col-2 pl-0 pr-0">
 				<div class="row">
-					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12 blank">blank</div>
@@ -42,8 +43,7 @@
 			</div>
 			<div class="billding west col-5">
 				<div class="east row text-center">
-					<div class="floor col-12" floor-id="e_R">RF</div>
-					<div class="floor col-12" floor-id="e_8">8F</div>
+					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12" floor-id="e_7">7F</div>
 					<div class="floor col-12" floor-id="e_6">6F</div>
 					<div class="floor col-12" floor-id="e_5">5F</div>
@@ -51,7 +51,6 @@
 					<div class="floor col-12" floor-id="e_3">3F</div>
 					<div class="floor col-12" floor-id="e_2">2F</div>
 					<div class="floor col-12" floor-id="e_1">1F</div>
-					<div class="floor col-12" floor-id="e_b1">B1F</div>
 				</div>
 			</div>
 		</div>
