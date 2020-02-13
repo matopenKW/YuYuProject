@@ -26,7 +26,7 @@ body * {
 
 .sky-bridge {
 	height: 6vh;
-	background-color: #fff;
+	background-color: #eee;
 }
 
 .floor:nth-child(odd){
@@ -41,9 +41,6 @@ body * {
 #floor-map {
 	height: 500px;
 	width: 500px;
-
-	/* 後で消します */
-	background-color: cadetblue;
 }
 
 .modal * {
