@@ -114,6 +114,10 @@ svg image {
 	height: 110px;
 }
 
+.product-detil {
+	display: none;
+}
+
 .a_team, .b_team, .c_team, .none_team {
 	color: #fff;
 }
