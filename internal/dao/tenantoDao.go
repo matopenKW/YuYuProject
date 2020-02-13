@@ -31,7 +31,7 @@ func GetTenatoDao() func(floorId string) ([]*dto.Tenanto, error) {
 }
 
 func getTenatoLocal(floorId string) ([]*dto.Tenanto, error) {
-	bytes, err := util.ReadFile("tool/json/twins/" + floorId + ".json")
+	bytes, err := util.ReadFile(JSON_FOLDER_PATH + "twins/" + floorId + ".json")
 	if err != nil {
 		return nil, err
 	}

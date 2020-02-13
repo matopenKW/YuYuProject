@@ -13,6 +13,7 @@ require (
 	github.com/facebookgo/httpcontrol v0.0.0-20150708234001-ccde4420e1fe // indirect
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
 	github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870 // indirect
+	github.com/gin-contrib/sessions v0.0.3
 	github.com/gin-gonic/gin v1.5.0
 	github.com/golang/groupcache v0.0.0-20191027212112-611e8accdfc9 // indirect
 	github.com/mitchellh/mapstructure v1.1.2
