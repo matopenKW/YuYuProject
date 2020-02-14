@@ -13,6 +13,8 @@ import (
 	"gopkg.in/ini.v1"
 )
 
+const BUILDING_COLLECTION = "test_building"
+
 func GetTenatoDao() func(floorId string) ([]*dto.Tenanto, error) {
 
 	c, _ := ini.Load(CONFIG_PATH)
@@ -31,7 +33,7 @@ func GetTenatoDao() func(floorId string) ([]*dto.Tenanto, error) {
 }
 
 func getTenatoLocal(floorId string) ([]*dto.Tenanto, error) {
-	bytes, err := util.ReadFile("tool/json/twins/" + floorId + ".json")
+	bytes, err := util.ReadFile(JSON_FOLDER_PATH + "twins/" + floorId + ".json")
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +48,7 @@ func getTenatoLocal(floorId string) ([]*dto.Tenanto, error) {
 func getTenatoFireBase(floorId string) ([]*dto.Tenanto, error) {
 	client, err := db.OpenFirestore()
 	collection := func(client *firestore.Client) *firestore.CollectionRef {
-		return client.Collection("building").Doc("twins").Collection(floorId)
+		return client.Collection(BUILDING_COLLECTION).Doc("twins").Collection(floorId)
 	}
 	option := &db.Option{
 		OrderBy: func() (string, firestore.Direction) {
@@ -89,7 +91,7 @@ func updateTenantoFireBase(floorId string, tenanto *dto.Tenanto) error {
 		return err
 	}
 	document := func(client *firestore.Client) *firestore.DocumentRef {
-		return client.Collection("building").Doc("twins").Collection(floorId).Doc(strconv.Itoa(tenanto.Seq))
+		return client.Collection(BUILDING_COLLECTION).Doc("twins").Collection(floorId).Doc(strconv.Itoa(tenanto.Seq))
 	}
 	err = db.UpdateDocument(client, document, tenanto)
 

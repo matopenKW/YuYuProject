@@ -7,6 +7,7 @@ type Team struct {
 	All       int    `json:",omitempty"`
 	West      int    `json:",omitempty"`
 	East      int    `json:",omitempty"`
+	Score     int    `json:",omitempty"`
 }
 
 type TeamProduct struct {

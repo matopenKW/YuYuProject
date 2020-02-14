@@ -1,3 +1,5 @@
+var viewSpeed = 'normal';
+
 $(function(){
     $(document).on('click', '.floor', function(){
         clickFloor(this);
@@ -15,11 +17,15 @@ $(function(){
     });
 
     $(document).on('click','#view-graph-area', function(){
-        $(".view-graph-toggle").toggle('normal');
+        $(".view-graph-toggle").toggle(viewSpeed);
     });
 
     $(document).on('click','#view-product-graph-area', function(){
-        $(".view-product-graph-toggle").toggle('normal');
+        $(".view-product-graph-toggle").toggle(viewSpeed);
+    });
+
+    $(document).on('click', '.product-bar', function(){
+        showProductDetil(this);
     });
 
     $(document).on('click', '#modalBtnRagist', function(){
@@ -155,4 +161,13 @@ function ragistProduct(){
     }
 
     ajaxExecute("/ragistProduct", 'GET', data, done, fail);
+}
+
+function showProductDetil(obj){
+    var teamName = $(obj).attr('class-data');
+    var tenantId = $(obj).attr('tenant-id');
+
+    var $targetObj = $('.product-detil.' + teamName + '.' + tenantId);
+    $('.product-detil').hide(viewSpeed);
+    $targetObj.show(viewSpeed);
 }

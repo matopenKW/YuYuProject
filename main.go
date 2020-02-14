@@ -5,8 +5,11 @@ import (
 	"YuYuProject/pkg/db"
 	"encoding/json"
 	"errors"
+	"fmt"
+	"html/template"
 	"log"
 	"net/http"
+	"time"
 
 	"firebase.google.com/go/auth"
 	"github.com/gin-contrib/sessions"
@@ -14,8 +17,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func formatAsSec(t time.Time) string {
+	//return fmt.Sprintf("03:04:05 PM", t.Hour(), t.Minute(), t.Second())
+	return fmt.Sprintf(t.Format("15:04:05"))
+
+}
+
 func main() {
 	router := gin.Default()
+
+	// set function
+	router.SetFuncMap(template.FuncMap{
+		"formatAsSec": formatAsSec,
+	})
+
 	router.Static("/assets", "./assets")
 	router.LoadHTMLGlob("templates/*.html")
 
@@ -42,6 +57,7 @@ func main() {
 
 	// WebAPI
 	router.GET("/updateTenantoTeam", updateTenantoTeam)
+	router.GET("/updateTeamRate", updateTeamRate)
 
 	router.Run()
 }
@@ -160,6 +176,23 @@ func ragistProduct(ctx *gin.Context, userRec *auth.UserRecord) {
 
 func updateTenantoTeam(ctx *gin.Context) {
 	err := apps.UpdateTenantoTeam()
+
+	var satus int
+	var msg string
+
+	if err != nil {
+		satus = http.StatusInternalServerError
+		msg = err.Error()
+	} else {
+		satus = http.StatusOK
+		msg = "成功しました。"
+	}
+
+	ctx.JSON(satus, createJsonMessage(msg))
+}
+
+func updateTeamRate(ctx *gin.Context) {
+	err := apps.UpdateTeamRate()
 
 	var satus int
 	var msg string

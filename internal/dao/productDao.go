@@ -6,12 +6,14 @@ import (
 	"errors"
 	"log"
 
+	"time"
+
 	"cloud.google.com/go/firestore"
 	"github.com/mitchellh/mapstructure"
 	"gopkg.in/ini.v1"
 )
 
-const COLLECTION_NAME = "product"
+const COLLECTION_NAME = "test_product"
 
 func RagistProductDao() func(teamId, tenantId string, product *dto.Product) error {
 
@@ -66,8 +68,9 @@ func GetProductDao() func(teamId, tenantId string) ([]*dto.Product, error) {
 
 func getProductDaoLocal(teamId, tenantId string) ([]*dto.Product, error) {
 
+	now := time.Now()
 	team := &dto.Product{
-		"にとにとり", "111222", nil,
+		"にとにとり", "111222", &now,
 	}
 	var list []*dto.Product
 	for i := 0; i < 15; i++ {

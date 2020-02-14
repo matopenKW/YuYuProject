@@ -2,57 +2,27 @@
 <html>
 <head>
   <style type="text/css" media="screen">
-	@import url("/assets/css/index.css");
-	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css");
-	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css");
+	@import url("/assets/css/index.css?var=1.2");
+	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css?var=1.2");
+	@import url("/assets/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css?var=1.2");
   </style>
-  <style>
-	h1 {
-      margin: 10px 0;
-      font-size: 40px;
-    }
-
-    #loadingMessage {
-      text-align: center;
-      padding: 40px;
-      background-color: #eee;
-    }
-
-    #canvas {
-	  height: 30vh;
-    }
-
-    #output {
-      margin-top: 20px;
-      background: #eee;
-      padding: 10px;
-      padding-bottom: 0;
-    }
-
-    #output div {
-      padding-bottom: 10px;
-      word-wrap: break-word;
-    }
-
-    #noQRFound {
-      text-align: center;
-    }
-	
-	  </style>
 </head>
 
 <body>
 
 	<div class="container-fluid pt-5">
-		{{if .teamIdView}}
-		<h3>Team: {{.team.Id}}</h3>
-		{{else}}
-		<h3>セッションがきれました！</h3>
-		{{end}}
+		<div class="row mb-5">
+			<div class="col">
+				{{if .teamIdView}}
+				<h3>Team: {{.team.Id}}</h3>
+				{{else}}
+				<h3>セッションがきれました！</h3>
+				{{end}}
+			</div>
+		</div>
 		<div class="row m-1">
 			<div class="billding col-5">
 				<div class="west row text-center">
-					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12" floor-id="w_8">8F</div>
 					<div class="floor col-12" floor-id="w_7">7F</div>
 					<div class="floor col-12" floor-id="w_6">6F</div>
@@ -61,12 +31,10 @@
 					<div class="floor col-12" floor-id="w_3">3F</div>
 					<div class="floor col-12" floor-id="w_2">2F</div>
 					<div class="floor col-12" floor-id="w_1">1F</div>
-					<div class="floor col-12 blank">blank</div>
 				</div>
 			</div>
 			<div class="center col-2 pl-0 pr-0">
 				<div class="row">
-					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12 blank">blank</div>
@@ -75,8 +43,7 @@
 			</div>
 			<div class="billding west col-5">
 				<div class="east row text-center">
-					<div class="floor col-12" floor-id="e_R">RF</div>
-					<div class="floor col-12" floor-id="e_8">8F</div>
+					<div class="floor col-12 blank">blank</div>
 					<div class="floor col-12" floor-id="e_7">7F</div>
 					<div class="floor col-12" floor-id="e_6">6F</div>
 					<div class="floor col-12" floor-id="e_5">5F</div>
@@ -84,7 +51,6 @@
 					<div class="floor col-12" floor-id="e_3">3F</div>
 					<div class="floor col-12" floor-id="e_2">2F</div>
 					<div class="floor col-12" floor-id="e_1">1F</div>
-					<div class="floor col-12" floor-id="e_b1">B1F</div>
 				</div>
 			</div>
 		</div>
@@ -98,7 +64,7 @@
 		<h3>全体</h3>
 		<div class="row">
 			{{range .list}}
-				<div class="{{.ClassName}} text-center" style="width: {{.All}}%;">{{.Id}} : {{.All}}%</div>
+				<div class="{{.ClassName}} text-center" style="width: {{.All}}%;">{{.Id}} : {{.All}}%<br><b>{{.Score}}P</b></div>
 			{{end}}
 		</div>
 		<h3>EAST</h3>
@@ -121,23 +87,74 @@
 	</div>
 	<div id="product-graph-area" class="view-product-graph-toggle">
 		<h3>ニトリ</h3>
-		<div class="row">
+		<div class="row product-bar-row">
 			{{range .productList1}}
-				<div class="{{.ClassName}} text-center product-bar" style="width: {{.Rate}}%;">{{.Id}} : {{.ProductNum}}個</div>
+				<div class="{{.ClassName}} text-center product-bar" class-data="{{.ClassName}}" tenant-id="nitori" style="width: {{.Rate}}%;">{{.Id}} : {{.ProductNum}}個</div>
 			{{end}}
 		</div>
+
+		{{range .productList1}}
+		<div class="row">
+			<div class="col {{.ClassName}} product-detil nitori">
+				<div class="row">
+				{{range .ProductList}}
+					<div class="col-4 text-center mb-3">
+						<p class="m-0">{{.ProductName}}</p>
+						<p class="m-0">{{.ProductNo}}</p>
+						<p class="m-0">{{.Timestamp | formatAsSec}}</p>
+					</div>
+				{{end}}
+				</div>
+			</div>
+		</div>
+		{{end}}
+
 		<h3>ダイソー</h3>
-		<div class="row">
+		<div class="row product-bar-row">
 			{{range .productList2}}
-				<div class="{{.ClassName}} text-center product-bar" style="width: {{.Rate}}%;">{{.Id}} : {{.ProductNum}}個</div>
+				<div class="{{.ClassName}} text-center product-bar" class-data="{{.ClassName}}" tenant-id="daiso" style="width: {{.Rate}}%;">{{.Id}} : {{.ProductNum}}個</div>
 			{{end}}
 		</div>
-		<h3>ハンズ</h3>
+
+		{{range .productList2}}
 		<div class="row">
+			<div class="col {{.ClassName}} product-detil daiso">
+				<div class="row">
+				{{range .ProductList}}
+					<div class="col-4 text-center mb-3">
+						<p class="m-0">{{.ProductName}}</p>
+						<p class="m-0">{{.ProductNo}}</p>
+						<p class="m-0">2000/01/01</p>
+					</div>
+				{{end}}
+				</div>
+			</div>
+		</div>
+		{{end}}
+
+		<h3>ハンズ</h3>
+		<div class="row product-bar-row">
 			{{range .productList3}}
-				<div class="{{.ClassName}} text-center product-bar" style="width: {{.Rate}}%;">{{.Id}} : {{.ProductNum}}個</div>
+				<div class="{{.ClassName}} text-center product-bar" class-data="{{.ClassName}}" tenant-id="hands" style="width: {{.Rate}}%;">{{.Id}} : {{.ProductNum}}個</div>
 			{{end}}
 		</div>
+
+		{{range .productList3}}
+		<div class="row">
+			<div class="col {{.ClassName}} product-detil hands">
+				<div class="row">
+				{{range .ProductList}}
+					<div class="col-4 text-center mb-3">
+						<p class="m-0">{{.ProductName}}</p>
+						<p class="m-0">{{.ProductNo}}</p>
+						<p class="m-0">2000/01/01</p>
+					</div>
+				{{end}}
+				</div>
+			</div>
+		</div>
+		{{end}}
+
 	</div>
 	<div id="ragist-serial">
 		<div class="row text-center">
@@ -157,7 +174,6 @@
 				<div class="modal-body" id="modal-body"></div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<!-- <button type="button" class="btn btn-primary">OK</button> -->
 				</div>
 			</div>
 		</div>
@@ -173,13 +189,13 @@
 				</button>
 				</div>
 				<div class="modal-body" id="serial-modal-body">
-					<div id="modal-ragist-serial" class="text-center">
+					<div id="modal-ragist-serial">
 						<h5>シリアルコードを登録</h5>
-						<div id="serial-code-area" class="row text-center">
-							<div class="col-12 text-center">
+						<div id="serial-code-area" class="row">
+							<div class="col-12 text-center mt-4">
 								<input id="serial-code-text" type="text" placeholder="コードを入力">
 							</div>
-							<div class="col−12 text-center">
+							<div class="col-12 text-center mt-4">
 								<button type="button" id="modalBtnRagist" class="btn btn-primary">シリアルコードを登録</button>
 							</div>
 						</div>
@@ -214,9 +230,9 @@
 		
 	<script src="/assets/jquery/jquery-3.4.1.min.js"></script>
 	<script src="/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-	<script src="/assets/js/ajax.js"></script>
+	<script src="/assets/js/ajax.js?var=1.2"></script>
 
-	<script src="/assets/js/index.js"></script>
+	<script src="/assets/js/index.js?var=1.2"></script>
 
 
 </body>
