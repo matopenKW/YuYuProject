@@ -12,6 +12,8 @@ import (
 	"gopkg.in/ini.v1"
 )
 
+const COLLECTION_TEAM = "test_team"
+
 func GetTeamDao() func() ([]*dto.Team, error) {
 
 	c, _ := ini.Load(CONFIG_PATH)
@@ -46,7 +48,7 @@ func getTeamJson() ([]*dto.Team, error) {
 func getTeamFireBase() ([]*dto.Team, error) {
 	client, err := db.OpenFirestore()
 	collection := func(client *firestore.Client) *firestore.CollectionRef {
-		return client.Collection("team")
+		return client.Collection(COLLECTION_TEAM)
 	}
 	option := &db.Option{
 		OrderBy: func() (string, firestore.Direction) {
@@ -87,7 +89,7 @@ func GetSingleTeamDao() func(userId string) (*dto.Team, error) {
 
 func getSingleTeamLocal(userId string) (*dto.Team, error) {
 	return &dto.Team{
-		"C", "c_team", userId, 0, 0, 0,
+		"C", "c_team", userId, 0, 0, 0, 0,
 	}, nil
 }
 
@@ -98,7 +100,7 @@ func getSingleTeamFireBase(userId string) (*dto.Team, error) {
 	}
 
 	collection := func(client *firestore.Client) *firestore.CollectionRef {
-		return client.Collection("team")
+		return client.Collection(COLLECTION_TEAM)
 	}
 
 	option := &db.Option{
@@ -123,4 +125,37 @@ func getSingleTeamFireBase(userId string) (*dto.Team, error) {
 	}
 
 	return ret, nil
+}
+
+func UpdateTeamDao() func(team *dto.Team) error {
+	c, _ := ini.Load(CONFIG_PATH)
+	environment := c.Section("db").Key("environment").MustInt()
+	switch environment {
+	case 1:
+		return func(team *dto.Team) error {
+			return nil
+		}
+	case 2:
+		return updateTeamFireBase
+	default:
+		return func(team *dto.Team) error {
+			return errors.New("daoのセットに失敗しました dao: GetSingleTeamDao, environment:" + string(environment))
+		}
+	}
+
+}
+
+func updateTeamFireBase(team *dto.Team) error {
+	client, err := db.OpenFirestore()
+	if err != nil {
+		return err
+	}
+	document := func(client *firestore.Client) *firestore.DocumentRef {
+		return client.Collection(COLLECTION_TEAM).Doc(team.Id)
+	}
+	err = db.UpdateDocument(client, document, team)
+	if err != nil {
+		return err
+	}
+	return nil
 }

@@ -29,7 +29,7 @@ func InsertSerial() error {
 		log.Println(v)
 
 		ctx := context.Background()
-		doc := firestore.Collection("serial").Doc(k)
+		doc := firestore.Collection(dao.SERIAL_COLLECTION).Doc(k)
 
 		_, err := doc.Set(ctx, v)
 		if err != nil {

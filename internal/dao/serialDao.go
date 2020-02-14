@@ -12,6 +12,8 @@ import (
 	"gopkg.in/ini.v1"
 )
 
+const SERIAL_COLLECTION = "test_serial"
+
 func GetSerialDao() func() ([]*dto.Serial, error) {
 
 	c, _ := ini.Load(CONFIG_PATH)
@@ -39,7 +41,7 @@ func getSerialFireBase() ([]*dto.Serial, error) {
 		return nil, err
 	}
 	collection := func(client *firestore.Client) *firestore.CollectionRef {
-		return client.Collection("serial")
+		return client.Collection(SERIAL_COLLECTION)
 	}
 	option := &db.Option{
 		OrderBy: func() (string, firestore.Direction) {
@@ -104,7 +106,7 @@ func getSingleSerialFireBase(serialCode string) (*dto.Serial, error) {
 		return nil, err
 	}
 	collection := func(client *firestore.Client) *firestore.CollectionRef {
-		return client.Collection("serial")
+		return client.Collection(SERIAL_COLLECTION)
 	}
 
 	serialMap, err := db.SelectDocument(client, serialCode, collection)
@@ -143,7 +145,7 @@ func updateSerialFireBase(serialCode string, serial *dto.Serial) error {
 		return err
 	}
 	document := func(client *firestore.Client) *firestore.DocumentRef {
-		return client.Collection("serial").Doc(serialCode)
+		return client.Collection(SERIAL_COLLECTION).Doc(serialCode)
 	}
 	err = db.UpdateDocument(client, document, serial)
 	if err != nil {

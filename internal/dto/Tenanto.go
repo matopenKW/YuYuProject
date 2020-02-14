@@ -5,4 +5,5 @@ type Tenanto struct {
 	Name        string `json:",omitempty"`
 	Acquisition string `json:",omitempty"`
 	ClassName   string `json:",omitempty"`
+	Score       int    `json:",omitempty"`
 }

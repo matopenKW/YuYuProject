@@ -49,5 +49,10 @@ func regist(teamId, serialCode string) error {
 		return err
 	}
 
+	err = UpdateTenant(serial)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
