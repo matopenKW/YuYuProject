@@ -12,7 +12,7 @@ import (
 	"gopkg.in/ini.v1"
 )
 
-const SERIAL_COLLECTION = "test_serial"
+const SERIAL_COLLECTION = "serial"
 
 func GetSerialDao() func() ([]*dto.Serial, error) {
 

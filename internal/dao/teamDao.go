@@ -12,7 +12,7 @@ import (
 	"gopkg.in/ini.v1"
 )
 
-const COLLECTION_TEAM = "test_team"
+const COLLECTION_TEAM = "team"
 
 func GetTeamDao() func() ([]*dto.Team, error) {
 

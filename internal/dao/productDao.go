@@ -13,7 +13,7 @@ import (
 	"gopkg.in/ini.v1"
 )
 
-const COLLECTION_NAME = "test_product"
+const COLLECTION_NAME = "product"
 
 func RagistProductDao() func(teamId, tenantId string, product *dto.Product) error {
 

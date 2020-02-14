@@ -13,7 +13,7 @@ import (
 	"gopkg.in/ini.v1"
 )
 
-const BUILDING_COLLECTION = "test_building"
+const BUILDING_COLLECTION = "building"
 
 func GetTenatoDao() func(floorId string) ([]*dto.Tenanto, error) {
 
