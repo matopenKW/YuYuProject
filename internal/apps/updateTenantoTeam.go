@@ -2,6 +2,7 @@ package apps
 
 import (
 	"YuYuProject/internal/dao"
+	"YuYuProject/internal/dto"
 	"errors"
 	"log"
 )
@@ -21,31 +22,42 @@ func update() error {
 		return err
 	}
 
-	tenantDao := dao.GetTenatoDao()
 	for _, serial := range serials {
-		errMsg := "Tenantoのレコードが不足しています FloorId:" + string(serial.FloorId) + " Seq:" + string(serial.Seq)
+		err := UpdateTenant(serial)
 
-		if !serial.Acquired {
-			continue
-		}
-		tenants, err := tenantDao(serial.FloorId)
 		if err != nil {
-			return err
-		}
-		if len(tenants) < serial.Seq {
-			return errors.New(errMsg)
-		}
-		tenant := tenants[serial.Seq-1]
-		if tenant.Seq != serial.Seq {
-			return errors.New(errMsg)
-		}
-
-		tenant.Acquisition = serial.Acquisition
-		updateTenanto := dao.UpdateTenantoDao()
-		err = updateTenanto(serial.FloorId, tenant)
-		if err != nil {
-			return err
+			return nil
 		}
 	}
+	return nil
+}
+
+func UpdateTenant(serial *dto.Serial) error {
+	errMsg := "Tenantoのレコードが不足しています FloorId:" + string(serial.FloorId) + " Seq:" + string(serial.Seq)
+
+	if !serial.Acquired {
+		return nil
+	}
+
+	tenantDao := dao.GetTenatoDao()
+	tenants, err := tenantDao(serial.FloorId)
+	if err != nil {
+		return err
+	}
+	if len(tenants) < serial.Seq {
+		return errors.New(errMsg)
+	}
+	tenant := tenants[serial.Seq-1]
+	if tenant.Seq != serial.Seq {
+		return errors.New(errMsg)
+	}
+
+	tenant.Acquisition = serial.Acquisition
+	updateTenanto := dao.UpdateTenantoDao()
+	err = updateTenanto(serial.FloorId, tenant)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }

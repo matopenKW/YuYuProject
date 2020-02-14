@@ -24,16 +24,33 @@ func updateTeamRate() error {
 	westList := make([]string, 0, 0)
 	westList = append(westList, "w_1", "w_2", "w_3", "w_4", "w_5", "w_6", "w_7", "w_8")
 
-	eastMap, err := getTeamRateMap(eastList)
+	eastMap, err := getTeamRateMap(eastList, 110)
 	if err != nil {
 		return err
 	}
-	log.Println(eastMap)
-	westMap, err := getTeamRateMap(westList)
+
+	westMap, err := getTeamRateMap(westList, 110)
 	if err != nil {
 		return err
 	}
-	log.Println(westMap)
+
+	getTeanDao := dao.GetTeamDao()
+	teamList, err := getTeanDao()
+	if err != nil {
+		return err
+	}
+
+	updateDao := dao.UpdateTeamDao()
+	for _, v := range teamList {
+		v.East = eastMap[v.Id]
+		v.West = westMap[v.Id]
+
+		err := updateDao(v)
+		if err != nil {
+			return err
+		}
+
+	}
 
 	if false {
 		return errors.New("")
@@ -42,10 +59,9 @@ func updateTeamRate() error {
 	return nil
 }
 
-func getTeamRateMap(floorIdList []string) (map[string]int, error) {
+func getTeamRateMap(floorIdList []string, totalScore int) (map[string]int, error) {
 	teamMap := make(map[string]int)
 
-	tenantSize := 0
 	tenantDao := dao.GetTenatoDao()
 	for _, floorId := range floorIdList {
 		tenantList, err := tenantDao(floorId)
@@ -53,51 +69,15 @@ func getTeamRateMap(floorIdList []string) (map[string]int, error) {
 			return nil, err
 		}
 		for _, tenant := range tenantList {
-			teamMap[tenant.Acquisition] = teamMap[tenant.Acquisition] + 1
-			tenantSize++
+			teamMap[tenant.Acquisition] = teamMap[tenant.Acquisition]
 		}
 	}
 
+	log.Println(teamMap)
+
 	teamRateMap := make(map[string]int)
 	for k, v := range teamMap {
-		teamRateMap[k] = (v * 100 / tenantSize)
+		teamRateMap[k] = (v * 100 / totalScore)
 	}
 	return teamRateMap, nil
-
 }
-
-// func update() error {
-// 	serialDao := dao.GetSerialDao()
-// 	serials, err := serialDao()
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	tenantDao := dao.GetTenatoDao()
-// 	for _, serial := range serials {
-// 		errMsg := "Tenantoのレコードが不足しています FloorId:" + string(serial.FloorId) + " Seq:" + string(serial.Seq)
-
-// 		if !serial.Acquired {
-// 			continue
-// 		}
-// 		tenants, err := tenantDao(serial.FloorId)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		if len(tenants) < serial.Seq {
-// 			return errors.New(errMsg)
-// 		}
-// 		tenant := tenants[serial.Seq-1]
-// 		if tenant.Seq != serial.Seq {
-// 			return errors.New(errMsg)
-// 		}
-
-// 		tenant.Acquisition = serial.Acquisition
-// 		updateTenanto := dao.UpdateTenantoDao()
-// 		err = updateTenanto(serial.FloorId, tenant)
-// 		if err != nil {
-// 			return err
-// 		}
-// 	}
-// 	return nil
-// }

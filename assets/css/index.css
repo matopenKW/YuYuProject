@@ -137,7 +137,7 @@ svg image {
 
 #product-graph-area .product-bar {
 	max-width: 33.3%;
-	min-width: 1%;
+	min-width: 10%;
 }
 
 #status-bar {

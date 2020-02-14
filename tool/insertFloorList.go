@@ -23,7 +23,7 @@ func InsertFloorList(flootId string) error {
 		log.Println(v)
 
 		ctx := context.Background()
-		ref := firestore.Collection("building").Doc("twins").Collection(flootId)
+		ref := firestore.Collection(dao.BUILDING_COLLECTION).Doc("twins").Collection(flootId)
 		doc := ref.Doc(strconv.Itoa(i + 1))
 
 		_, err := doc.Set(ctx, v)
