@@ -5,8 +5,11 @@ import (
 	"YuYuProject/pkg/db"
 	"encoding/json"
 	"errors"
+	"fmt"
+	"html/template"
 	"log"
 	"net/http"
+	"time"
 
 	"firebase.google.com/go/auth"
 	"github.com/gin-contrib/sessions"
@@ -14,8 +17,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func formatAsSec(t time.Time) string {
+	//return fmt.Sprintf("03:04:05 PM", t.Hour(), t.Minute(), t.Second())
+	return fmt.Sprintf(t.Format("15:04:05"))
+
+}
+
 func main() {
 	router := gin.Default()
+
+	// set function
+	router.SetFuncMap(template.FuncMap{
+		"formatAsSec": formatAsSec,
+	})
+
 	router.Static("/assets", "./assets")
 	router.LoadHTMLGlob("templates/*.html")
 
