@@ -64,7 +64,7 @@
 		<h3>全体</h3>
 		<div class="row">
 			{{range .list}}
-				<div class="{{.ClassName}} text-center" style="width: {{.All}}%;">{{.Id}} : {{.All}}%</div>
+				<div class="{{.ClassName}} text-center" style="width: {{.All}}%;">{{.Id}} : {{.All}}%<br><b>{{.Score}}P</b></div>
 			{{end}}
 		</div>
 		<h3>EAST</h3>
@@ -101,7 +101,7 @@
 					<div class="col-4 text-center mb-3">
 						<p class="m-0">{{.ProductName}}</p>
 						<p class="m-0">{{.ProductNo}}</p>
-						<p class="m-0">2000/01/01</p>
+						<p class="m-0">{{.Timestamp | formatAsSec}}</p>
 					</div>
 				{{end}}
 				</div>

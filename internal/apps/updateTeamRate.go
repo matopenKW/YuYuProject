@@ -24,12 +24,12 @@ func updateTeamRate() error {
 	westList := make([]string, 0, 0)
 	westList = append(westList, "w_1", "w_2", "w_3", "w_4", "w_5", "w_6", "w_7", "w_8")
 
-	eastMap, err := getTeamRateMap(eastList, 110)
+	eastMap, eastScoreMap, err := getTeamRateMap(eastList, 162)
 	if err != nil {
 		return err
 	}
 
-	westMap, err := getTeamRateMap(westList, 110)
+	westMap, wastScoreMap, err := getTeamRateMap(westList, 58)
 	if err != nil {
 		return err
 	}
@@ -44,6 +44,7 @@ func updateTeamRate() error {
 	for _, v := range teamList {
 		v.East = eastMap[v.Id]
 		v.West = westMap[v.Id]
+		v.Score = eastScoreMap[v.Id] + wastScoreMap[v.Id]
 
 		err := updateDao(v)
 		if err != nil {
@@ -59,17 +60,22 @@ func updateTeamRate() error {
 	return nil
 }
 
-func getTeamRateMap(floorIdList []string, totalScore int) (map[string]int, error) {
+func getTeamRateMap(floorIdList []string, totalScore int) (map[string]int, map[string]int, error) {
 	teamMap := make(map[string]int)
 
 	tenantDao := dao.GetTenatoDao()
 	for _, floorId := range floorIdList {
 		tenantList, err := tenantDao(floorId)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 		for _, tenant := range tenantList {
-			teamMap[tenant.Acquisition] = teamMap[tenant.Acquisition]
+			score := tenant.Score
+			if score < 1 {
+				score = 1
+			}
+
+			teamMap[tenant.Acquisition] = teamMap[tenant.Acquisition] + score
 		}
 	}
 
@@ -79,5 +85,5 @@ func getTeamRateMap(floorIdList []string, totalScore int) (map[string]int, error
 	for k, v := range teamMap {
 		teamRateMap[k] = (v * 100 / totalScore)
 	}
-	return teamRateMap, nil
+	return teamRateMap, teamMap, nil
 }
