@@ -27,7 +27,7 @@ func GetTenatoDao() func(floorId string) ([]*dto.Tenanto, error) {
 		return getTenatoFireBase
 	default:
 		return func(floorId string) ([]*dto.Tenanto, error) {
-			return nil, errors.New("daoのセットに失敗しました environment:" + string(environment))
+			return nil, errors.New("GetTenatoDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }
@@ -76,11 +76,15 @@ func UpdateTenantoDao() func(string, *dto.Tenanto) error {
 	c, _ := ini.Load(CONFIG_PATH)
 	environment := c.Section("db").Key("environment").MustInt()
 	switch environment {
+	case 1:
+		return func(string, *dto.Tenanto) error {
+			return nil
+		}
 	case 2:
 		return updateTenantoFireBase
 	default:
 		return func(string, *dto.Tenanto) error {
-			return errors.New("daoのセットに失敗しました environment:" + string(environment))
+			return errors.New("UpdateTenantoDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }

@@ -28,7 +28,7 @@ func RagistProductDao() func(teamId, tenantId string, product *dto.Product) erro
 		return regisatProductFireBase
 	default:
 		return func(teamId, tenantId string, product *dto.Product) error {
-			return errors.New("daoのセットに失敗しました dao:RagistProductDao environment:" + string(environment))
+			return errors.New("RagistProductDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }
@@ -61,7 +61,7 @@ func GetProductDao() func(teamId, tenantId string) ([]*dto.Product, error) {
 		return getProductDaoFirebase
 	default:
 		return func(teamId, tenantId string) ([]*dto.Product, error) {
-			return nil, errors.New("daoのセットに失敗しました dao:GetProductDao environment:" + string(environment))
+			return nil, errors.New("GetProductDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }

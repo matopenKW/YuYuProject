@@ -25,7 +25,7 @@ func GetTeamDao() func() ([]*dto.Team, error) {
 		return getTeamFireBase
 	default:
 		return func() ([]*dto.Team, error) {
-			return nil, errors.New("daoのセットに失敗しました dao: GetTeamDao, environment:" + string(environment))
+			return nil, errors.New("GetTeamDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }
@@ -82,7 +82,7 @@ func GetSingleTeamDao() func(userId string) (*dto.Team, error) {
 		return getSingleTeamFireBase
 	default:
 		return func(userId string) (*dto.Team, error) {
-			return nil, errors.New("daoのセットに失敗しました dao: GetSingleTeamDao, environment:" + string(environment))
+			return nil, errors.New("GetSingleTeamDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }
@@ -139,7 +139,7 @@ func UpdateTeamDao() func(team *dto.Team) error {
 		return updateTeamFireBase
 	default:
 		return func(team *dto.Team) error {
-			return errors.New("daoのセットに失敗しました dao: GetSingleTeamDao, environment:" + string(environment))
+			return errors.New("GetSingleTeamDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 

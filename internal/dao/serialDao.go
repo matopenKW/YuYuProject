@@ -25,7 +25,7 @@ func GetSerialDao() func() ([]*dto.Serial, error) {
 		return getSerialFireBase
 	default:
 		return func() ([]*dto.Serial, error) {
-			return nil, errors.New("daoのセットに失敗しました environment:" + string(environment))
+			return nil, errors.New("GetSerialDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }
@@ -76,7 +76,7 @@ func GetSingleSerialDao() func(string) (*dto.Serial, error) {
 		return getSingleSerialFireBase
 	default:
 		return func(string) (*dto.Serial, error) {
-			return nil, errors.New("daoのセットに失敗しました environment:" + string(environment))
+			return nil, errors.New("GetSingleSerialDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }
@@ -134,7 +134,7 @@ func UpdateSerialDao() func(string, *dto.Serial) error {
 		return updateSerialFireBase
 	default:
 		return func(string, *dto.Serial) error {
-			return errors.New("daoのセットに失敗しました dao: UpdateSerialDao, environment:" + string(environment))
+			return errors.New("UpdateSerialDaoのセットに失敗しました environment:" + string(environment))
 		}
 	}
 }
